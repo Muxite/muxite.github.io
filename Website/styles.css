@@ -1,0 +1,51 @@
+:root{
+    --red-color: red;
+    --gray-color: rgb(177, 177, 177);
+}
+
+@media (min-width: 0px) {
+    h1 {
+        font-size: 2em;
+    }
+    body{
+        font-size: 2em;
+    }
+}
+@media (min-width: 1920px) {
+    h1 {
+        font-size: 3em;
+    }
+    body{
+        font-size: 2em;
+    }
+}
+
+
+h1 {
+    color: var(--red-color);
+}
+h3 {
+    color: var(--red-color);
+}
+
+body{
+    background-color: black;
+    font-family: "Courier New";
+    color: var(--gray-color);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.pile {
+    justify-self: stretch;
+    border: 2px solid red;
+    grid-column-start: 1;
+    grid-column-end: 1+start;
+    grid-row-start: 1;
+    grid-row-end: 1+start;
+}
+

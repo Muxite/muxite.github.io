@@ -47,9 +47,6 @@ body{
     color: var(--gray-color);
 }
 
-.description {
-    display: grid;
-}
 
 .container {
     display: grid;

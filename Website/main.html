@@ -2,10 +2,17 @@
 <html lang = "en">
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruby Raccoon</title>
     <link rel="stylesheet" href="styles.css">
+    
 
 </head>
 
@@ -16,9 +23,7 @@
         </h1>
 
         <p>
-            Ruby Raccoon is a website that I will update, with many fun goodies.
-            RAAHH, nyoom. You should get a Logitech G600 MMO Mouse. 
-            This is because it has 12 side buttons, and a ring finger button.
+            Ruby Raccoon is a website that I will update with many fun goodies.
         </p>
     </div>
     
@@ -34,24 +39,24 @@
 
     </div>
     <div class="container">
-        <div class="pile">
-            <p>
-                THIS PART SHOULD BE GENERATED WITH JS
-            </p>
-            <h3>
-                Pile #N
-            </h3>
-            
-            <p>
-                CONTENTS HERE
-            </p>
-    
+        <div class="row">
+            <div class="col">
+                <button class="accordion"> Pile #N </button>
+                <div class="panel"> 
+                    <p>
+                        THIS PART SHOULD BE GENERATED WITH JS
+                    </p>
+                </div>
+            </div>
         </div>
+        <div class="row"></div>
+    
+        
     </div>
     
     
 
-
+    <script src="accordion.js"></script>
 </body>
 
 

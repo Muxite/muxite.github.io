@@ -120,5 +120,5 @@ def rebuild_html():
             f.write(str(soup))
 
 
-for i in range(3):
+for i in range(5):
     rebuild_html()

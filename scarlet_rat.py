@@ -67,13 +67,13 @@ def bot():
             link = chosen.get_attribute("href")
             browser.get(link)
             time.sleep(1)  # wait a bit for the page to load
-            divs = browser.find_elements_by_xpath('//p')  # stuff
+            divs = browser.find_elements_by_xpath('//p | //span')  # stuff
             print(len(divs))
             if len(divs) == 0:
                 continue
             builder = []
             i = random.randint(0, len(divs))
-            end = i+random.randint(1, 5)
+            end = i+random.randint(2, 8)
             while True:
                 if i > end:
                     break

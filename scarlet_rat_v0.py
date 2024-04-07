@@ -70,7 +70,7 @@ def bot():
             link = chosen.get_attribute("href")
             browser.get(link)
             time.sleep(1)  # wait a bit for the page to load
-            divs = browser.find_elements_by_xpath('//p | //li')  # stuff
+            divs = browser.find_elements_by_xpath('//p')  # stuff
             print(len(divs))
             if len(divs) == 0:
                 continue

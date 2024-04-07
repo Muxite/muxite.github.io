@@ -115,8 +115,9 @@ def rebuild_html():
         script.decompose()
     soup.body.append(new_div)
     # save to file
-    with open("index.html", "w") as f:
-        f.write(str(soup))
+    if str(soup) != "":
+        with open("index.html", "w") as f:
+            f.write(str(soup))
 
 
 for i in range(20):

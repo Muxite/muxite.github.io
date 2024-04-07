@@ -8,7 +8,7 @@ import random
 import os
 
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
-words_range = [1, 4]
+words_range = [1, 6]
 google = 'https://www.google.com/'
 
 html_file = 'D:\Github\muxite.github.io\index.html'
@@ -72,11 +72,11 @@ def bot():
             time.sleep(1)  # wait a bit for the page to load
             divs = browser.find_elements_by_xpath('//p')  # stuff
             print(len(divs))
-            if len(divs) == 0:
+            if len(divs) < 2:
                 continue
             builder = []
             i = random.randint(0, len(divs))
-            end = i + random.randint(2, 8)
+            end = i + random.randint(5, 8)
             while True:
                 if i > end:
                     break
@@ -120,5 +120,5 @@ def rebuild_html():
             f.write(str(soup))
 
 
-for i in range(5):
+for i in range(25):
     rebuild_html()

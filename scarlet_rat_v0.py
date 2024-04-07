@@ -89,8 +89,8 @@ def bot():
             print(link)
             print(builder)
             return term, link, builder
-        except IndexError:
-            print("Index Error")
+        except:
+            print("Error")
         if runs > max_runs:
             print("FAILED")
             break

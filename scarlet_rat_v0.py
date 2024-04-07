@@ -8,7 +8,7 @@ import random
 import os
 
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
-words_range = [2, 4]
+words_range = [1, 4]
 google = 'https://www.google.com/'
 
 html_file = 'D:\Github\muxite.github.io\index.html'
@@ -88,7 +88,6 @@ def bot():
             print(term)
             print(link)
             print(builder)
-            browser.close()
             return term, link, builder
         except IndexError:
             print("Index Error")
@@ -96,7 +95,6 @@ def bot():
             print("FAILED")
             break
         runs += 1
-    browser.close()
 
 
 def rebuild_html():
@@ -121,5 +119,5 @@ def rebuild_html():
         f.write(str(soup))
 
 
-for i in range(50):
+for i in range(40):
     rebuild_html()

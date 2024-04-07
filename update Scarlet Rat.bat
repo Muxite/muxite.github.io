@@ -1,4 +1,5 @@
-start set CONDA_ENV=SeleniumBot
+start 
+set CONDA_ENV=SeleniumBot
 call conda activate %CONDA_ENV%
 python "D:\Github\muxite.github.io\scarlet_rat_v0.py"
 call conda deactivate

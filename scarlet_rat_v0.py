@@ -10,8 +10,7 @@ import os
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
 words_range = [2, 4]
 google = 'https://www.google.com/'
-browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
-browser.minimize_window()
+
 html_file = 'D:\Github\muxite.github.io\index.html'
 html_snippet = '''
 <div class="container">
@@ -53,6 +52,8 @@ def get_search_term(heap_location, word_count):
 
 
 def bot():
+    browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
+    browser.minimize_window()
     max_runs = 10
     runs = 0
     while True:

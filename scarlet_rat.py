@@ -8,10 +8,9 @@ import random
 import os
 
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
-words_range = [2, 4]
+words_range = [1, 4]
 google = 'https://www.google.com/'
-browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
-browser.minimize_window()
+
 html_file = 'D:\Github\muxite.github.io\index.html'
 html_snippet = '''
 <div class="container">
@@ -53,6 +52,8 @@ def get_search_term(heap_location, word_count):
 
 
 def bot():
+    browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
+    browser.minimize_window()
     max_runs = 10
     runs = 0
     while True:
@@ -87,7 +88,6 @@ def bot():
             print(term)
             print(link)
             print(builder)
-            browser.close()
             return term, link, builder
         except IndexError:
             print("Index Error")
@@ -95,7 +95,6 @@ def bot():
             print("FAILED")
             break
         runs += 1
-    browser.close()
 
 
 def rebuild_html():
@@ -116,9 +115,10 @@ def rebuild_html():
         script.decompose()
     soup.body.append(new_div)
     # save to file
-    with open("index.html", "w") as f:
-        f.write(str(soup))
+    if str(soup) != "" or soup is not None:
+        with open("index.html", "w") as f:
+            f.write(str(soup))
 
 
-for i in range(25):
+for i in range(20):
     rebuild_html()

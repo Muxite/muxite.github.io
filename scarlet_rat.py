@@ -1,14 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup  # yeah theres both selenium and bs4 here
 import requests
 import time
-import datetime
+from datetime import datetime
 import random
 import os
 
+
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
-words_range = [1, 4]
+words_range = [1, 3]
 google = 'https://www.google.com/'
 
 html_file = 'D:\Github\muxite.github.io\index.html'
@@ -51,6 +53,24 @@ def get_search_term(heap_location, word_count):
     return builder
 
 
+def div_min(div_iter, iteration):
+    if iteration > 10:
+        print("too many iterations")
+        return None
+    else:
+        test = random.choice(div_iter)
+        div_childs = test.find_elements_by_xpath('.//div')
+        if not div_childs:
+            if len(test.find_elements_by_xpath('.//*')) > 0 and len(str(test.get_attribute('innerHTML'))) > 2000:
+                print(test.get_attribute('innerHTML'))
+                return test
+            else:
+                print("no content, no sub-divs")
+                return None
+        else:
+            return div_min(div_childs, iteration+1)
+
+
 def bot():
     browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
     browser.minimize_window()
@@ -69,26 +89,24 @@ def bot():
             chosen = pages[random.randint(0, len(pages) - 1)]  # random webpage
             link = chosen.get_attribute("href")
             browser.get(link)
-            time.sleep(1)  # wait a bit for the page to load
-            divs = browser.find_elements_by_xpath('//p | //li')  # stuff
+            time.sleep(2)  # wait a bit for the page to load
+            divs = browser.find_elements_by_xpath('//div')
             print(len(divs))
             if len(divs) == 0:
                 continue
-            builder = []
-            i = random.randint(0, len(divs))
-            end = i + random.randint(2, 8)
-            while True:
-                if i > end:
-                    break
+            # now investigate the list of divs to find a lowest level div
+            for i in range(0, 10):  # 10 tries max
                 try:
-                    builder.append(divs[i].get_attribute("innerHTML"))
+                    response = div_min(divs, 0)
+                    if response is not None:
+                        block = response.get_attribute('innerHTML')
+                        browser.close()
+                        return datetime.now().strftime("%Y-%m-%d-%H%M%S"), term, link, block
                 except IndexError:
-                    break
-                i += 1
-            print(term)
-            print(link)
-            print(builder)
-            return term, link, builder
+                    print("div attempt error")
+            else:
+                continue
+
         except IndexError:
             print("Index Error")
         if runs > max_runs:
@@ -97,28 +115,13 @@ def bot():
         runs += 1
 
 
-def rebuild_html():
-    # open file
-    with open(html_file) as f:
-        soup = BeautifulSoup(f, 'html.parser')
-    search_term, link, ppp = bot()
-    html_string = html_snippet.replace("DATE", str(datetime.datetime.now()))
-    html_string = html_string.replace("URL", link)
-    html_string = html_string.replace("TITLE", search_term)
-    content = ''
-    for part in ppp:
-        content += str(part)
-    html_string = html_string.replace("CONTENT", content)
-    new_div = BeautifulSoup(html_string, 'html.parser')
-    scripts_to_remove = soup.find_all("script", src="accordion.js")
-    for script in scripts_to_remove:
-        script.decompose()
-    soup.body.append(new_div)
-    # save to file
-    if str(soup) != "" or soup is not None:
-        with open("index.html", "w") as f:
-            f.write(str(soup))
+def html_make_chunk():
+    time_made, term, link, block = bot()
+    title = str(time_made) + " " + str(term) + ".html"
+    with open(title, 'w+', encoding="utf-8") as html_block:
+        html_block.write(block)
+    print(link)
 
 
-for i in range(20):
-    rebuild_html()
+for i in range(0, 30):
+    html_make_chunk()

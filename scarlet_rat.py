@@ -8,7 +8,8 @@ from datetime import datetime
 import random
 import os
 
-
+page_div_investigation_time = []  # 2.376628432955061
+page_p_investigation_time = []  #
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
 words_range = [1, 3]
 google = 'https://www.google.com/'
@@ -55,57 +56,83 @@ def get_search_term(heap_location, word_count):
 
 def div_min(div_iter, iteration):
     if iteration > 10:
-        print("too many iterations")
         return None
     else:
-        test = random.choice(div_iter)
-        div_childs = test.find_elements_by_xpath('.//div')
+        div_childs = div_iter.find_elements_by_xpath('.//div')
         if not div_childs:
-            if len(test.find_elements_by_xpath('.//*')) > 0 and len(str(test.get_attribute('innerHTML'))) > 2000:
-                print(test.get_attribute('innerHTML'))
-                return test
+            if len(str(div_iter.get_attribute('innerHTML'))) > 3000:
+                return div_iter
             else:
-                print("no content, no sub-divs")
                 return None
         else:
-            return div_min(div_childs, iteration+1)
+            return div_min(random.choice(div_childs), iteration+1)
 
 
 def bot():
-    browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe")
+    mode = 1
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--mute-audio")
+    browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe", chrome_options=chrome_options)
     browser.minimize_window()
-    max_runs = 10
+    max_runs = 15
     runs = 0
     while True:
-        term = get_search_term(sample, words_range)
+        term = get_search_term(sample, words_range) + "how to"
         browser.get(google)
-        time.sleep(2)
+        time.sleep(1)
         search_bar = browser.find_element_by_xpath('//*[@id="APjFqb"]')  # get the search bar
         search_bar.send_keys(term)  # input the word
         search_bar.send_keys(u'\ue007')  # press enter
-        time.sleep(2)  # wait a bit for the page to load
+        time.sleep(1)  # wait a bit for the page to load
         try:
             pages = browser.find_elements_by_xpath('//a[contains(@jsname, "UWckNb")]')
             chosen = pages[random.randint(0, len(pages) - 1)]  # random webpage
             link = chosen.get_attribute("href")
             browser.get(link)
-            time.sleep(2)  # wait a bit for the page to load
-            divs = browser.find_elements_by_xpath('//div')
-            print(len(divs))
-            if len(divs) == 0:
-                continue
-            # now investigate the list of divs to find a lowest level div
-            for i in range(0, 10):  # 10 tries max
-                try:
-                    response = div_min(divs, 0)
-                    if response is not None:
-                        block = response.get_attribute('innerHTML')
-                        browser.close()
-                        return datetime.now().strftime("%Y-%m-%d-%H%M%S"), term, link, block
-                except IndexError:
-                    print("div attempt error")
+            time.sleep(1)  # wait a bit for the page to load
+            if mode == 0:
+                page_investigate_start_time = time.time()
+                divs = browser.find_elements_by_xpath('//div')
+                if len(divs) == 0:
+                    continue
+                # now investigate the list of divs to find a lowest level div
+                for i in range(0, max(len(divs), 20)):  # 20 tries max
+                    try:
+                        response = div_min(random.choice(divs), 0)
+                        if response is not None:
+                            block = response.get_attribute('outerHTML')
+                            browser.close()
+                            page_div_investigation_time.append(time.time() - page_investigate_start_time)
+                            return datetime.now().strftime("%Y-%m-%d-%H%M%S"), term, link, block
+                        else:
+                            pass
+                    except IndexError:
+                        print("div attempt error")
+                else:
+                    page_div_investigation_time.append(time.time() - page_investigate_start_time)
+                    continue
             else:
-                continue
+                page_investigate_start_time = time.time()
+                ps = browser.find_elements_by_xpath('//p')
+                if len(ps) == 0:
+                    continue
+                # now investigate the list of p to find good p
+                for i in range(0, len(ps)):  # as many tries as there are paragraphs
+                    try:
+                        response = random.choice(ps)
+                        block = response.get_attribute('outerHTML')
+                        if (response is not None and
+                           len(block) > 2000):
+                            browser.close()
+                            page_p_investigation_time.append(time.time() - page_investigate_start_time)
+                            return datetime.now().strftime("%Y-%m-%d-%H%M%S"), term, link, block
+                        else:
+                            ps.remove(response)  # strike this p out
+                    except IndexError:
+                        pass
+                else:
+                    page_p_investigation_time.append(time.time() - page_investigate_start_time)
+                    continue
 
         except IndexError:
             print("Index Error")
@@ -116,12 +143,17 @@ def bot():
 
 
 def html_make_chunk():
+    start_time = time.time()
     time_made, term, link, block = bot()
-    title = str(time_made) + " " + str(term) + ".html"
+    title = str(time_made) + ".html"
     with open(title, 'w+', encoding="utf-8") as html_block:
         html_block.write(block)
-    print(link)
+        print("created " + str(title))
+    print("total time: " + str(time.time() - start_time))
 
 
-for i in range(0, 30):
+for i in range(0, 10):
+    print(i)
     html_make_chunk()
+    print(page_p_investigation_time)
+    print(page_div_investigation_time)

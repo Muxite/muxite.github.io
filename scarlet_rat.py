@@ -1,41 +1,22 @@
 from selenium import webdriver
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup  # yeah theres both selenium and bs4 here
-import requests
 import time
 from datetime import datetime
 import random
-import os
+import os,glob
 
 page_div_investigation_time = []  # 2.376628432955061
 page_p_investigation_time = []  #
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
 words_range = [1, 3]
 google = 'https://www.google.com/'
-
-html_file = 'D:\Github\muxite.github.io\index.html'
-html_snippet = '''
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <button class="accordion"> DATE </button>
-            <div class="panel"> 
-                <a href="URL">TITLE</a> <br>
-
-                CONTENT
-            </div>
-        </div>
-    </div>
-</div>
-<script src="accordion.js"></script>
-'''
-
+html_file_template = r'template.html'
+html_file_index = r'index.html'
+pile_location = r"pile/"
 
 def get_search_term(heap_location, word_count):
     heap = ""
-    for l in open(heap_location, encoding="utf8"):
-        heap += l.replace("\n", "").replace("BATTLE ROYALE", "")  # remove these strings
+    for letter in open(heap_location, encoding="utf8"):
+        heap += letter.replace("\n", "").replace("BATTLE ROYALE", "")  # remove these strings
     wc = random.randint(word_count[0], word_count[1])  # how many words will be selected.
     i = random.randint(0, len(heap) - 30)
     spaces_found = 0
@@ -68,13 +49,11 @@ def div_min(div_iter, iteration):
             return div_min(random.choice(div_childs), iteration+1)
 
 
-def bot():
-    mode = 1
+def bot(mode, max_runs):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--mute-audio")
-    browser = webdriver.Chrome("D:\Github\muxite.github.io\chromedriver.exe", chrome_options=chrome_options)
+    browser = webdriver.Chrome(r"chromedriver.exe", chrome_options=chrome_options)
     browser.minimize_window()
-    max_runs = 15
     runs = 0
     while True:
         term = get_search_term(sample, words_range) + "how to"
@@ -125,7 +104,7 @@ def bot():
                            len(block) > 2000):
                             browser.close()
                             page_p_investigation_time.append(time.time() - page_investigate_start_time)
-                            return datetime.now().strftime("%Y-%m-%d-%H%M%S"), term, link, block
+                            return datetime.now().strftime("%Y-%m-%d--%H-%M-%S"), term, link, block
                         else:
                             ps.remove(response)  # strike this p out
                     except IndexError:
@@ -142,18 +121,57 @@ def bot():
         runs += 1
 
 
-def html_make_chunk():
-    start_time = time.time()
-    time_made, term, link, block = bot()
+def make_text(tag, tag_follower, text):  # make text (add your own tag)
+    return str('<%s %s>%s</%s>' % (tag, tag_follower, text, tag))
+
+
+def package(time_made, term, link, block):  # make a list of parts to write
+    build = []
+    build.append('<div class="container">')
+    build.append('<div class="row">')
+    build.append('<div class="col">')
+    build.append(make_text('button', 'class="accordion active"', time_made))
+    build.append('<div class="panel" style="display: block;">')
+    build.append(make_text('h2', '', term))
+    build.append(make_text('a', 'href=%s' % link, link))
+    build.append(block)
+    build.append('</div>')
+    build.append('</div>')
+    build.append('</div>')
+    build.append('</div>')
+    return build
+
+
+def html_make_chunk():  # make a html chunk that can be added to the index.html
+    time_start = time.time()
+    time_made, term, link, block = bot(0, 15)
     title = str(time_made) + ".html"
-    with open(title, 'w+', encoding="utf-8") as html_block:
-        html_block.write(block)
+    with open(pile_location + title, 'w+', encoding="utf-8") as html_block:
+        to_write = package(time_made, term, link, block)
+        for piece in to_write:
+            html_block.write(piece)
         print("created " + str(title))
-    print("total time: " + str(time.time() - start_time))
+    print("total time: " + str(time.time() - time_start))
+
+
+def create_index():  # use the template and all chunks to form index.html
+    print("creating index")
+    time_start = time.time()
+    big = ""
+    for html_file in glob.glob(os.path.join(pile_location, '*.html')):
+        with open(html_file, 'r', encoding="utf8") as f:
+            big += str(f.read())
+    # now make a new index, and replace the marker with the combined chunks
+    with open(html_file_template, 'r', encoding="utf-8") as html_template:
+        with open(html_file_index, 'w+', encoding="utf-8") as html_index:
+            html_index.truncate(0)  # clear all
+            html_index.write(str(html_template.read()).replace("<p>MARKER1</p>", big))
+    print("created index")
+    print("total time: " + str(time.time() - time_start))
 
 
 for i in range(0, 10):
-    print(i)
     html_make_chunk()
-    print(page_p_investigation_time)
-    print(page_div_investigation_time)
+
+
+create_index()

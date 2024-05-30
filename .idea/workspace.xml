@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/muxite.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/muxite.github.io.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.chromedriver" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE.chromedriver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chromedriver.exe" beforeDir="false" afterPath="$PROJECT_DIR$/chromedriver.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-05-19-194146.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scarlet_rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat.py" afterDir="false" />
-    </list>
+    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

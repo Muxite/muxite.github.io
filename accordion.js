@@ -1,5 +1,6 @@
 var accordions = document.getElementsByClassName("accordion");
 
+
 var i;
 for (i = 0; i < accordions.length; i++) {
     accordions[i].addEventListener("click", function() {
@@ -12,6 +13,4 @@ for (i = 0; i < accordions.length; i++) {
         }
     });
 }
-
-
 

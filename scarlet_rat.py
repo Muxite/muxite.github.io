@@ -10,8 +10,10 @@ sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
 words_range = [1, 3]
 google = 'https://www.google.com/'
 html_file_template = r'template.html'
+block_file_template = r'block_template.html'
 html_file_index = r'index.html'
 pile_location = r"pile/"
+
 
 def get_search_term(heap_location, word_count):
     heap = ""
@@ -50,13 +52,13 @@ def div_min(div_iter, iteration):
 
 
 def bot(mode, max_runs):
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--mute-audio")
-    browser = webdriver.Chrome(r"chromedriver.exe", chrome_options=chrome_options)
+    options = webdriver.ChromeOptions()
+    options.add_argument("--mute-audio")
+    browser = webdriver.Chrome(r"chromedriver.exe", options=options)
     browser.minimize_window()
     runs = 0
     while True:
-        term = get_search_term(sample, words_range) + "how to"
+        term = get_search_term(sample, words_range)
         browser.get(google)
         time.sleep(1)
         search_bar = browser.find_element_by_xpath('//*[@id="APjFqb"]')  # get the search bar
@@ -146,11 +148,15 @@ def html_make_chunk():  # make a html chunk that can be added to the index.html
     time_start = time.time()
     time_made, term, link, block = bot(0, 15)
     title = str(time_made) + ".html"
-    with open(pile_location + title, 'w+', encoding="utf-8") as html_block:
-        to_write = package(time_made, term, link, block)
-        for piece in to_write:
-            html_block.write(piece)
-        print("created " + str(title))
+    with open(block_file_template, 'r', encoding="utf-8") as html_block_template:
+        with open(pile_location + title, 'w+', encoding="utf-8") as html_block:
+            to_write = str(html_block_template.read())
+            to_write = to_write.replace("TITLE", term)
+            to_write = to_write.replace("DATE", time_made)
+            to_write = to_write.replace("CONTENT", block)
+            to_write = to_write.replace("LINK", link)
+            html_block.write(to_write)
+            print("created " + str(title))
     print("total time: " + str(time.time() - time_start))
 
 
@@ -158,9 +164,14 @@ def create_index():  # use the template and all chunks to form index.html
     print("creating index")
     time_start = time.time()
     big = ""
+    parts = []
     for html_file in glob.glob(os.path.join(pile_location, '*.html')):
         with open(html_file, 'r', encoding="utf8") as f:
-            big += str(f.read())
+            parts.append(str(f.read()))
+
+    for i in range(len(parts)):  # build in reverse order
+        big += parts[len(parts)-1-i]
+
     # now make a new index, and replace the marker with the combined chunks
     with open(html_file_template, 'r', encoding="utf-8") as html_template:
         with open(html_file_index, 'w+', encoding="utf-8") as html_index:
@@ -170,8 +181,7 @@ def create_index():  # use the template and all chunks to form index.html
     print("total time: " + str(time.time() - time_start))
 
 
-for i in range(0, 10):
+for i in range(0, 5):
     html_make_chunk()
-
 
 create_index()

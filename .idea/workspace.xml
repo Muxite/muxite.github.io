@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="" />
+    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tictactoe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scarlet_rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -127,22 +127,22 @@ def make_text(tag, tag_follower, text):  # make text (add your own tag)
     return str('<%s %s>%s</%s>' % (tag, tag_follower, text, tag))
 
 
-def package(time_made, term, link, block):  # make a list of parts to write
-    build = []
-    build.append('<div class="container">')
-    build.append('<div class="row">')
-    build.append('<div class="col">')
-    build.append(make_text('button', 'class="accordion active"', time_made))
-    build.append('<div class="panel" style="display: block;">')
-    build.append(make_text('h2', '', term))
-    build.append(make_text('a', 'href=%s' % link, link))
-    build.append(block)
-    build.append('</div>')
-    build.append('</div>')
-    build.append('</div>')
-    build.append('</div>')
-    return build
-
+# def package(time_made, term, link, block):  # make a list of parts to write
+#     build = []
+#     build.append('<div class="container">')
+#     build.append('<div class="row">')
+#     build.append('<div class="col">')
+#     build.append(make_text('button', 'class="accordion active"', time_made))
+#     build.append('<div class="panel" style="display: block;">')
+#     build.append(make_text('h2', '', term))
+#     build.append(make_text('a', 'href=%s' % link, link))
+#     build.append(block)
+#     build.append('</div>')
+#     build.append('</div>')
+#     build.append('</div>')
+#     build.append('</div>')
+#     return build
+#
 
 def html_make_chunk():  # make a html chunk that can be added to the index.html
     time_start = time.time()

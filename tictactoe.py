@@ -1,6 +1,8 @@
+import random
+
 board_width, board_height = 3, 3
-line_length = 3
-board = [[0]*board_width]*board_height
+score_to_win = 3
+board = []
 
 
 def win_check(board_w, board_h, test_board, updated_square, required_score):
@@ -24,8 +26,9 @@ def win_check(board_w, board_h, test_board, updated_square, required_score):
                 continue
 
     for neighbor in neighbors:
-        vector = (updated_square[0]-neighbor[0],updated_square[1]-neighbor[1])  # ex (1,0), (-1,-1)
-        current_score = 2  # the updated square is 1, the neighbor in this direction is 2
+        vector = (neighbor[0]-updated_square[0], neighbor[1]-updated_square[1])  # ex (1,0), (-1,-1)
+        print(vector)
+        current_score = 1  # the updated square is 1
         # keep checking next square in that direction until win
         for i in range(required_score):
             if current_score > required_score:
@@ -34,14 +37,15 @@ def win_check(board_w, board_h, test_board, updated_square, required_score):
             else:
                 # if the next square in the vector is same as looking_for
                 try:  # 2 is added to skip to after neighbor
-                    if test_board[updated_square[1]+(i+2)*vector[1]][updated_square[0]+(i+2)*vector[0]] == looking_for:
+                    print(test_board[updated_square[1]+(i+1)*vector[1]][updated_square[0]+(i+1)*vector[0]])
+                    if test_board[updated_square[1]+(i+1)*vector[1]][updated_square[0]+(i+1)*vector[0]] == looking_for:
                         current_score += 1
                 except IndexError:  # out of bounds
-                    break  # now
+                    break  # now hit edge
         # now check reverse direction
         for i in range(required_score):
             if current_score > required_score:
-                print("WINNER" + str(looking_for))
+                print("WINNER " + str(looking_for))
                 return True, looking_for  # did someone win? if so, who?
             else:
                 # if the next square in the vector is same as looking_for
@@ -50,8 +54,47 @@ def win_check(board_w, board_h, test_board, updated_square, required_score):
                      updated_square[0] + (i+1) * -vector[0]] == looking_for:
                         current_score += 1
                 except IndexError:  # out of bounds
-                    break  # now
+                    break  # now hit edge
 
     # if the code has advanced to here, then there was no win
     return False, looking_for
+
+
+def display_board(to_display):
+    for i in range(len(to_display)):
+        print(to_display[i])
+
+
+def play():
+    global board
+    board = []
+    for a in range(board_height):
+        sub = []
+        for b in range(board_width):
+            sub.append(0)
+        board.append(sub)
+    print(board)
+    display_board(board)
+    played_squares = []
+    # as many turns as there are squares
+    first_player = random.randint(0, 1)  # if 0, the human goes first
+    for turns in range(board_width*board_height):
+        if turns % 2 == first_player:
+            # human plays
+            while True:
+                new_square = (int(input("x:")), int(input("y:")))
+                if new_square in played_squares:
+                    print("invalid, retry")
+                else:
+                    played_squares.append(new_square)  # wont repeat again
+                    board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
+                    win_check(board_width, board_height, board, new_square, score_to_win)
+                    display_board(board)
+                    break
+
+        else:
+            # bot plays
+            pass
+
+play()
 

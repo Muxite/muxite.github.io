@@ -2,7 +2,8 @@ from selenium import webdriver
 import time
 from datetime import datetime
 import random
-import os,glob
+import os
+import glob
 
 page_div_investigation_time = []  # 2.376628432955061
 page_p_investigation_time = []  #
@@ -181,7 +182,10 @@ def create_index():  # use the template and all chunks to form index.html
     print("total time: " + str(time.time() - time_start))
 
 
-for i in range(0, 5):
-    html_make_chunk()
+def make():
+    for i in range(0, 5):
+        html_make_chunk()
 
+
+make()
 create_index()

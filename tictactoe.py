@@ -1,6 +1,6 @@
 import random
 import time
-board_width, board_height = 3, 3
+board_width, board_height = 4, 4
 score_to_win = 3
 
 
@@ -110,6 +110,7 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
                 finish = True
 
         if finish is True:
+            print("bot can score")
             break
 
         # pass 2 (can enemy win this turn? if so stop it)
@@ -122,24 +123,26 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
                     if j != i:
                         scores[j] += -100/level  # choosing this would result in defeat
                     else:
-                        scores[i] = 0  # gain nothing, but don't lose
+                        scores[j] = 0  # gain nothing, but don't lose
+                        print(scores[j])
                 finish = True
 
         if finish is True:
+            print("player can score")
             break
 
         # pass 3 how valuable is this move?
-        # if level < foresight:
-        #     for i, empty in enumerate(empties):
-        #         b = jl_copy(board)
-        #         b[empty[1]][empty[0]] = team
-        #         # consider the enemy action
-        #
-        #         # play
-        #         ns = bot(foresight, board_w, board_h, b, team, enemy, required_score, level+1)
-        #         scores[i] = sum(ns)  # this is the valuation of the move
-        #         print("Valuation:")
-        #         print(scores[i])
+        if level < foresight:
+            for i, empty in enumerate(empties):
+                b = jl_copy(board)
+                b[empty[1]][empty[0]] = team
+                # consider the enemy action
+
+                # play
+                ns = bot(foresight, board_w, board_h, b, team, enemy, required_score, level+1)
+                scores[i] = sum(ns)  # this is the valuation of the move
+                print("Valuation:")
+                print(scores[i])
         break
 
     if level == 1:  # level starts at 1 to avoid divide by 0

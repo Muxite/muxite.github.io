@@ -69,7 +69,7 @@ def win_check(board_w, board_h, t_board, updated_square, required_score):
                 if not bound_check(sam, board_width-1, board_height-1) or test_board[sam[1]][sam[0]] != looking_for:
                     if not reversing:
                         reversing = True
-                        i = i * 0
+                        i = i * 0 - 1  # looping back up adds 1
                     else:
                         break
                 else:
@@ -89,6 +89,7 @@ def display_board(to_display):
 def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
     # literally simulate a game in its head
     # find all empties, simulate what happens.
+    start_time = time.time_ns()
     empties = []
     scores = []  # scores will be assigned to each empty
     for row in range(len(board)):
@@ -110,7 +111,6 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
                 finish = True
 
         if finish is True:
-            print("bot can score")
             break
 
         # pass 2 (can enemy win this turn? if so stop it)
@@ -121,14 +121,12 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
                 # negative score to everything except the blocker
                 for j in range(len(empties)):
                     if j != i:
-                        scores[j] += -100/level  # choosing this would result in defeat
+                        scores[j] = -100/level  # choosing this would result in defeat
                     else:
                         scores[j] = 0  # gain nothing, but don't lose
-                        print(scores[j])
                 finish = True
 
         if finish is True:
-            print("player can score")
             break
 
         # pass 3 how valuable is this move?
@@ -137,12 +135,13 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
                 b = jl_copy(board)
                 b[empty[1]][empty[0]] = team
                 # consider the enemy action
-
-                # play
-                ns = bot(foresight, board_w, board_h, b, team, enemy, required_score, level+1)
-                scores[i] = sum(ns)  # this is the valuation of the move
-                print("Valuation:")
-                print(scores[i])
+                ns = 0
+                for j, r_empty in enumerate(empties):
+                    # play
+                    bb = jl_copy(b)
+                    bb[r_empty[1]][r_empty[0]] = enemy
+                    ns += sum(bot(foresight, board_w, board_h, bb, team, enemy, required_score, level+1))
+                scores[i] = ns/(len(empties))
         break
 
     if level == 1:  # level starts at 1 to avoid divide by 0
@@ -152,6 +151,7 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
             if score > highest:
                 pick = empties[i]
                 highest = score
+        print(str((time.time_ns() - start_time)/1000000) + "ms")
         return pick
     else:  # sub-level, return scores
         return scores
@@ -169,21 +169,44 @@ def play():
     played_squares = []
     # as many turns as there are squares
     first_player = random.randint(0, 1)  # if 0, the human goes first
+    # for turns in range(board_width*board_height*2):
+    #     if turns % 2 == first_player:
+    #         # human plays
+    #         print("HUMAN PLAYS")
+    #         while True:
+    #             new_square = (int(input("x:")), int(input("y:")))
+    #             if new_square in played_squares:
+    #                 print("invalid, retry")
+    #             else:
+    #                 played_squares.append(new_square)  # wont repeat again
+    #                 board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
+    #                 if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+    #                     print("FINISHED")
+    #                 display_board(board)
+    #                 break
+    #     else:
+    #         # bot plays
+    #         print("BOT PLAYS")
+    #         new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1)
+    #         played_squares.append(new_square)  # wont repeat again
+    #         board[new_square[1]][new_square[0]] = 2  # player is 1, bot is 2
+    #         print(new_square)
+    #         if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+    #             print("***FINISHED***")
+    #         display_board(board)
     for turns in range(board_width*board_height*2):
+        # bot v bot
         if turns % 2 == first_player:
-            # human plays
-            print("HUMAN PLAYS")
-            while True:
-                new_square = (int(input("x:")), int(input("y:")))
-                if new_square in played_squares:
-                    print("invalid, retry")
-                else:
-                    played_squares.append(new_square)  # wont repeat again
-                    board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
-                    if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
-                        print("FINISHED")
-                    display_board(board)
-                    break
+            print("BOT PLAYS")
+            new_square = bot(2, board_width, board_height, board, 1, 2, score_to_win, 1)
+            played_squares.append(new_square)  # wont repeat again
+            board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
+            print(new_square)
+            display_board(board)
+            if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+                print("***FINISHED***")
+                break
+
         else:
             # bot plays
             print("BOT PLAYS")
@@ -191,9 +214,10 @@ def play():
             played_squares.append(new_square)  # wont repeat again
             board[new_square[1]][new_square[0]] = 2  # player is 1, bot is 2
             print(new_square)
-            if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
-                print("FINISHED")
             display_board(board)
+            if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+                print("***FINISHED***")
+                break
 
 
 def benchmark_win_check(reps):  # roughly 0.01433ms

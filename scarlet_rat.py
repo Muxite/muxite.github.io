@@ -10,9 +10,9 @@ page_p_investigation_time = []  #
 sample = "Battle Royale.txt"  # sample text to get search terms from. Good book.
 words_range = [1, 3]
 google = 'https://www.google.com/'
-html_file_template = r'template.html'
-block_file_template = r'block_template.html'
-html_file_index = r'index.html'
+html_file_template = r'template_scarlet_rat_pile.html'
+block_file_template = r'template_scarlet_rat_block.html'
+html_file_index = r'scarlet_rat_pile.html'
 pile_location = r"pile/"
 
 

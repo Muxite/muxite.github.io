@@ -4,27 +4,31 @@
     --background-color: rgb(32, 32, 32);
 }
 
+
 @media (min-width: 0px) {
     h1 {
-        font-size: 2.5em;
+        font-size: 5em;
+    }
+    h2 {
+        font-size: 3em;
+    }
+    h3 {
+        font-size: 3em;
+    }
+    h5 {
+        font-size: 2em;
     }
     .accordion{
-        font-size: 2em;
+        font-size: 1.5em;
     }
-    body{
-        font-size: 2em;
+    p{
+        font-size: 1.5em;
     }
-}
-@media (min-width: 1000px) {
-    h1 {
-        font-size: 4em;
-        
+    a{
+        font-size: 1.5em;
     }
-    .accordion{
-        font-size: 2em;
-    }
-    body{
-        font-size: 2em;
+    li{
+        font-size: 1.5em;
     }
 }
 
@@ -39,18 +43,55 @@ h1 {
     color: var(--gray-color);
     font-weight: 1000;
 }
+h2 {
+    color: var(--gray-color);
+    font-weight: 1000;
+}
 h3 {
     color: var(--gray-color);
+    font-weight: 700;
+}
+h5 {
+    color: var(--gray-color);
+    font-weight: 700;
+}
+p {
+    font-weight: 500;
+}
+li {
+    font-weight: 200;
 }
 
 body{
     background-color: var(--background-color);
     color: var(--gray-color);
+    
+}
+
+div{
+    display: flex;
+    align-items: flex-start;
+}
+.whole {
+    display: grid;
+    overflow-wrap: normal;
+    padding-top: 3em;
+    padding-right: 3em;
+    padding-bottom: 3em;
+    padding-left: 3em;
+    text-align: left;
+    
 }
 
 .description {
+    align-items: left;
+    text-align: left;
     display: grid;
     overflow-wrap: normal;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: 100em;
+    padding: 2em;
 }
 
 .container {

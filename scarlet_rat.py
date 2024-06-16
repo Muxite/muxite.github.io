@@ -178,7 +178,7 @@ def create_index():  # use the template and all chunks to form index.html
         with open(html_file_index, 'w+', encoding="utf-8") as html_index:
             html_index.truncate(0)  # clear all
             html_index.write(str(html_template.read()).replace("<p>MARKER1</p>", big))
-    print("created index")
+    print("created page")
     print("total time: " + str(time.time() - time_start))
 
 
@@ -187,5 +187,4 @@ def make():
         html_make_chunk()
 
 
-make()
 create_index()

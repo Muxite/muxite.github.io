@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/block_template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scarlet_rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scarlet_rat_pile.html" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat_pile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/muxite.github.io env" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Python.tictactoe">
+  <component name="RunManager" selected="Python.scarlet_rat">
     <configuration name="scarlet_rat" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="muxite.github.io" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,8 +88,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tictactoe" />
         <item itemvalue="Python.scarlet_rat" />
+        <item itemvalue="Python.tictactoe" />
       </list>
     </recent_temporary>
   </component>

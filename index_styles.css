@@ -1,25 +1,53 @@
 :root{
     --red-color: rgb(177,0,0);
-    --gray-color: rgb(177, 177, 177);
-    --background-color: rgb(32, 32, 32);
+    --gray-color: rgb(205, 205, 205);
+    --background-color: rgb(26, 26, 26);
 }
 
 
 @media (min-width: 0px) {
     h1 {
-        font-size: 5em;
+        font-size: 3em;
     }
     h2 {
-        font-size: 3em;
+        font-size: 2.25em;
     }
     h3 {
-        font-size: 3em;
-    }
-    h5 {
         font-size: 2em;
     }
-    .accordion{
+    h5 {
         font-size: 1.5em;
+    }
+    .accordion{
+        font-size: 1.2em;
+    }
+    p{
+        font-size: 1.5em;
+    }
+    a{
+        font-size: 1.5em;
+    }
+    li{
+        font-size: 1.5em;
+    }
+}
+
+
+@media (min-width: 1000px) {
+    h1 {
+        font-size: 4em;
+    }
+    h2 {
+        font-size: 2.5em;
+    }
+    h3 {
+        font-size: 2.25em;
+    }
+    h5 {
+        font-size: 1.5em;
+    }
+    .accordion{
+        font-size: 1.2em;
     }
     p{
         font-size: 1.5em;
@@ -83,6 +111,11 @@ div{
     
 }
 
+.image {
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    margin-right: 10px; /* Adjust the spacing between text and image */
+  }
+
 .description {
     align-items: left;
     text-align: left;
@@ -95,7 +128,9 @@ div{
 }
 
 .container {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .row {

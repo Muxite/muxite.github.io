@@ -2,6 +2,8 @@
     --red-color: rgb(177,0,0);
     --gray-color: rgb(177, 177, 177);
     --background-color: rgb(32,32,32);
+    --alt-bg-color: rgb(192, 192, 192);
+    --alt-txt-color: rgb(60, 60, 60);
 }
 
 @media (min-width: 0px) {
@@ -134,22 +136,38 @@ body{
 
 
 .row {
-    border: 2px solid var(--red-color);
+    border: 3px solid var(--red-color);
+}
+
+.column {
+    text-align: left;
+    display: grid;
+    align-items: left;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .panel {
     background-color: var(--background-color);
     display: none;
     overflow-wrap: normal;
+    align-items: left;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: 100em;
+    background-color: var();
 }
 
 .accordion {
     font-weight: 50;
     display: block;
+    align-items: left;
     background-color: var(--background-color);
     color: var(--red-color);
     cursor: pointer;
-    text-align: center;
+    text-align: start;
+    margin-left: 0;
+    margin-right: auto;
   }
 
 .active, .accordion:hover {

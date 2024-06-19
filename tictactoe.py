@@ -158,32 +158,67 @@ def bot(foresight, board_w, board_h, board, team, enemy, required_score, level):
 
 
 def play():
-    board = []
-    for a in range(board_height):
-        sub = []
-        for b in range(board_width):
-            sub.append(0)
-        board.append(sub)
-    print("START")
-    display_board(board)
-    played_squares = []
-    # as many turns as there are squares
-    first_player = random.randint(0, 1)  # if 0, the human goes first
+    while True:
+        board = []
+        for a in range(board_height):
+            sub = []
+            for b in range(board_width):
+                sub.append(0)
+            board.append(sub)
+        print("START")
+        display_board(board)
+        played_squares = []
+        # as many turns as there are squares
+        first_player = random.randint(0, 1)  # if 0, the human goes first
+        winner = 0
+        for turns in range(board_width*board_height*2):
+            if turns % 2 == first_player:
+                # human plays
+                print("HUMAN PLAYS")
+                while True:
+                    new_square = (int(input("x:")), int(input("y:")))
+                    if new_square in played_squares:
+                        print("invalid, retry")
+                    else:
+                        played_squares.append(new_square)  # wont repeat again
+                        board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
+                        if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+                            print("FINISHED")
+                            winner = 1
+                        display_board(board)
+                        break
+            else:
+                # bot plays
+                print("BOT PLAYS")
+                new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1)
+                played_squares.append(new_square)  # wont repeat again
+                board[new_square[1]][new_square[0]] = 2  # player is 1, bot is 2
+                print(new_square)
+                if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+                    print("***FINISHED***")
+                    winner = 2
+                display_board(board)
+
+            if winner != 0:
+                if winner == 1:
+                    print("**PLAYER WON**")
+                else:
+                    print("**BOT WON**")
+                break
+
     # for turns in range(board_width*board_height*2):
+    #     # bot v bot
     #     if turns % 2 == first_player:
-    #         # human plays
-    #         print("HUMAN PLAYS")
-    #         while True:
-    #             new_square = (int(input("x:")), int(input("y:")))
-    #             if new_square in played_squares:
-    #                 print("invalid, retry")
-    #             else:
-    #                 played_squares.append(new_square)  # wont repeat again
-    #                 board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
-    #                 if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
-    #                     print("FINISHED")
-    #                 display_board(board)
-    #                 break
+    #         print("BOT PLAYS")
+    #         new_square = bot(2, board_width, board_height, board, 1, 2, score_to_win, 1)
+    #         played_squares.append(new_square)  # wont repeat again
+    #         board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
+    #         print(new_square)
+    #         display_board(board)
+    #         if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
+    #             print("***FINISHED***")
+    #             break
+    #
     #     else:
     #         # bot plays
     #         print("BOT PLAYS")
@@ -191,33 +226,10 @@ def play():
     #         played_squares.append(new_square)  # wont repeat again
     #         board[new_square[1]][new_square[0]] = 2  # player is 1, bot is 2
     #         print(new_square)
+    #         display_board(board)
     #         if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
     #             print("***FINISHED***")
-    #         display_board(board)
-    for turns in range(board_width*board_height*2):
-        # bot v bot
-        if turns % 2 == first_player:
-            print("BOT PLAYS")
-            new_square = bot(2, board_width, board_height, board, 1, 2, score_to_win, 1)
-            played_squares.append(new_square)  # wont repeat again
-            board[new_square[1]][new_square[0]] = 1  # player is 1, bot is 2
-            print(new_square)
-            display_board(board)
-            if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
-                print("***FINISHED***")
-                break
-
-        else:
-            # bot plays
-            print("BOT PLAYS")
-            new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1)
-            played_squares.append(new_square)  # wont repeat again
-            board[new_square[1]][new_square[0]] = 2  # player is 1, bot is 2
-            print(new_square)
-            display_board(board)
-            if win_check(board_width, board_height, board, new_square, score_to_win)[0]:
-                print("***FINISHED***")
-                break
+    #             break
 
 
 def benchmark_win_check(reps):  # roughly 0.01433ms

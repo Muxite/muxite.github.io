@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot 2024-05-19 194611.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/index_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scarlet_rat_pile.html" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat_pile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scarlet_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template_scarlet_rat_pile.html" beforeDir="false" afterPath="$PROJECT_DIR$/template_scarlet_rat_pile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe.py" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/muxite.github.io env" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PixelWeaver" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.scarlet_rat">

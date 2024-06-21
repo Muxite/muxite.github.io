@@ -1,18 +1,18 @@
 var title = document.querySelector('.top h1');
 var banner = document.querySelector('.top img');
-var webname = document.querySelector('.top h2');
+var webname = document.querySelector('.banner');
 const banners = ["assets/480 120 banner 2x.gif", "assets/A-star banner.gif"]
 function titleChange(){
     var width = innerWidth;
     console.log(width);
     if (width > 1280){
-        title.style.fontSize = 0.0055*width + 'em';
-        webname.style.fontSize = 0.003*width + 'em';
+        title.style.fontSize = 0.005*width + 'em';
+        webname.style.fontSize = 0.0025*width + 'em';
         console.log(title.style.fontSize);
     }
     else{
-        title.style.fontSize = 0.0055*1280 + 'em';
-        webname.style.fontSize = 0.003*1280 + 'em';
+        title.style.fontSize = 0.005*1280 + 'em';
+        webname.style.fontSize = 0.0025*1280 + 'em';
         console.log(title.style.fontSize);
     }
 }

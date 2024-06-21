@@ -1,17 +1,15 @@
 :root{
     --red-color: rgb(177,0,0);
-    --gray-color: rgb(177, 177, 177);
-    --background-color: rgb(32,32,32);
-    --alt-bg-color: rgb(192, 192, 192);
-    --alt-txt-color: rgb(60, 60, 60);
+    --gray-color: rgb(205, 205, 205);
+    --background-color: rgb(14, 14, 14, 1);
+    --section-color: rgb(22, 22, 22);
+    --subsection-color: rgb(32, 32, 32);
 }
+
 
 @media (min-width: 0px) {
-    h1 {
-        font-size: 3.5em;
-    }
     h2 {
-        font-size: 2.5em;
+        font-size: 2.25em;
     }
     h3 {
         font-size: 2em;
@@ -20,57 +18,60 @@
         font-size: 1.5em;
     }
     .accordion{
-        font-size: 1em;
+        font-size: 1.2em;
     }
     p{
-        font-size: 1em;
+        font-size: 1.2em;
     }
     a{
-        font-size: 1em;
+        font-size: 1.2em;
     }
     li{
-        font-size: 1em;
+        font-size: 1.2em;
+    }
+    .banner{
+        object-fit: cover;
+        min-width:1280px;
+        margin: 0;
     }
 }
 
-@media (min-width: 1000px) {
-    h1 {
-        font-size: 5em;
-    }
-    h2 {
-        font-size: 3em;
-    }
+
+@media (min-width: 1280px) {
     h3 {
-        font-size: 3em;
-    }
-    h5 {
         font-size: 2em;
     }
-    .accordion{
+    h5 {
         font-size: 1.5em;
+    }
+    .accordion{
+        font-size: 1.2em;
     }
     p{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     a{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     li{
-        font-size: 1.5em;
+        font-size: 1.2em;
+    }
+    .banner{
+        min-width:100%;
+        width:100%;
+        margin: 0;
     }
 }
 
 * {
-    box-sizing: border-box;
     width: 100%;
     font-family: "Courier New";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 } 
 
 
-h1 {
-    color: var(--red-color);
-    font-weight: 1000;
-}
 h2 {
     color: var(--gray-color);
     font-weight: 1000;
@@ -84,79 +85,146 @@ h5 {
     font-weight: 700;
 }
 p {
-    color: var(--gray-color);
     font-weight: 500;
 }
 li {
-    color: var(--gray-color);
     font-weight: 200;
-}
-.description {
-    display: grid;
+    margin-left: 3em;
 }
 
-.container {
-    display: grid;
-}
 
-body{
-    background-color: var(--background-color);
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
     color: var(--gray-color);
-    
+    margin:0;
+    padding: 0;
+    overflow-x: hidden; 
 }
 
 .whole {
     display: grid;
+    background-color: var(--background-color);
     overflow-wrap: normal;
-    padding-top: 3em;
-    padding-right: 3em;
-    padding-bottom: 3em;
-    padding-left: 3em;
+    padding: 1em;
     text-align: left;
+}
+
+
+.top {
+    background-color: var(--background-color);
+    overflow-wrap: normal;    
+    position: relative;
+    display:block;
+    margin:0;
     
 }
 
-.imgbox {
-    display: grid;
-    overflow-wrap: normal;
-    margin: 0.5em;
-    text-align: left; 
+.top h1 {
+    color: var(--red-color);
+    font-weight: 1000;
+    font-size: 4em;
+    margin:0px;
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    background-color: transparent;
 }
 
 
-.description {
+.top h2 {
+    font-size: 2.5em;
+    color: var(--red-color);
+    font-weight: 1000;
+    margin:0px;
+    position: absolute;
+    top: 3%;
+    left: 4%;
+    background-color: transparent;
+}
+
+.fade {
+    position: absolute;
+    margin:0px;
+    background-image: linear-gradient(to top, var(--background-color), rgba(0,0,0,0));
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+}
+
+.image {
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    margin-right: 10px; /* Adjust the spacing between text and image */
+  }
+
+.grid-container {
     align-items: left;
     text-align: left;
     display: grid;
-    overflow-wrap: normal;
-    margin-left: 0;
-    margin-right: auto;
-    max-width: 100em;
+    grid-template-columns: auto;
+    row-gap: 2em;
+    overflow-wrap: normal;    
+}
+
+
+
+.section {
+    background-color: var(--section-color);
+    align-items: left;
+    text-align: left;
+    display: inline;
+    max-width: 120em;
+    overflow-wrap: normal;    
     padding: 2em;
 }
 
 
-.row {
-    border: 3px solid var(--red-color);
+.subsection {
+    background-color: var(--subsection-color);
+    display: inline-block;
+    max-width: 120em;
+    overflow-wrap: normal;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
-.column {
-    text-align: left;
-    display: flex;
-    align-items: left;
-    margin-left: 0;
-    margin-right: auto;
+.container {
+    background-color: var(--subsection-color);
+    display: inline-block;
+    max-width: 120em;
+    overflow-wrap: normal;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    
 }
+
+
+.row {
+    border: 6px solid var(--red-color);
+}
+
 
 .panel {
     background-color: var(--background-color);
     display: none;
     overflow-wrap: normal;
-    align-items: left;
+    align-items: flex-start;
     margin-left: 0;
-    margin-right: auto;
+    padding: 2em;
+    margin-right: 0;
     max-width: 100em;
-    background-color: var();
+    object-fit: cover;
 }
 
 .accordion {
@@ -167,9 +235,9 @@ body{
     color: var(--red-color);
     cursor: pointer;
     text-align: start;
-    margin-left: 0;
-    margin-right: auto;
-  }
+    padding: 0.5em;
+    max-width: 100em;
+}
 
 .active, .accordion:hover {
     background-color: var(--red-color);

@@ -5,12 +5,12 @@ function titleChange(){
     var width = innerWidth;
     console.log(width);
     if (width > 1280){
-        title.style.fontSize = 0.006*width + 'em';
+        title.style.fontSize = 0.0055*width + 'em';
         webname.style.fontSize = 0.003*width + 'em';
         console.log(title.style.fontSize);
     }
     else{
-        title.style.fontSize = 0.006*1280 + 'em';
+        title.style.fontSize = 0.0055*1280 + 'em';
         webname.style.fontSize = 0.003*1280 + 'em';
         console.log(title.style.fontSize);
     }

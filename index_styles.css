@@ -4,7 +4,6 @@
     --background-color: rgb(14, 14, 14, 1);
     --section-color: rgb(22, 22, 22);
     --subsection-color: rgb(32, 32, 32);
-    
 }
 
 
@@ -22,24 +21,25 @@
         font-size: 1.2em;
     }
     p{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     a{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     li{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     .banner{
+        object-fit: cover;
         min-width:1280px;
-        width:1280px
+        margin: 0;
     }
 }
 
 
 @media (min-width: 1280px) {
     h3 {
-        font-size: 2.25em;
+        font-size: 2em;
     }
     h5 {
         font-size: 1.5em;
@@ -48,17 +48,18 @@
         font-size: 1.2em;
     }
     p{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     a{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     li{
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     .banner{
         min-width:100%;
         width:100%;
+        margin: 0;
     }
 }
 
@@ -91,9 +92,18 @@ li {
 
 }
 
-body{
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
     color: var(--gray-color);
-    margin:0px
+    margin:0;
+    padding: 0;
+    overflow-x: hidden; 
 }
 
 .whole {
@@ -109,7 +119,8 @@ body{
     background-color: var(--background-color);
     overflow-wrap: normal;    
     position: relative;
-    display:block
+    display:block;
+    margin:0;
     
 }
 
@@ -117,7 +128,7 @@ body{
     color: var(--gray-color);
     font-weight: 1000;
     font-size: 4em;
-    
+    margin:0px;
     position: absolute;
     top: 20%;
     left: 4%;
@@ -129,6 +140,7 @@ body{
     font-size: 2.5em;
     color: var(--gray-color);
     font-weight: 1000;
+    margin:0px;
     position: absolute;
     top: 3%;
     left: 4%;
@@ -137,6 +149,7 @@ body{
 
 .fade {
     position: absolute;
+    margin:0px;
     background-image: linear-gradient(to top, var(--background-color), rgba(0,0,0,0));
     bottom: 0%;
     left: 0%;
@@ -164,7 +177,7 @@ body{
     align-items: left;
     text-align: left;
     display: inline;
-    max-width: 100em;
+    max-width: 80em;
     overflow-wrap: normal;    
     padding: 2em;
 }
@@ -173,7 +186,7 @@ body{
 .subsection {
     background-color: var(--subsection-color);
     display: inline-block;
-    max-width: 100em;
+    max-width: 180em;
     overflow-wrap: normal;
     padding: 1em;
     margin-top: 1em;

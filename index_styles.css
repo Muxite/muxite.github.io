@@ -1,14 +1,14 @@
 :root{
     --red-color: rgb(177,0,0);
     --gray-color: rgb(205, 205, 205);
-    --background-color: rgb(18, 18, 18);
+    --background-color: rgb(14, 14, 14, 1);
+    --section-color: rgb(22, 22, 22);
+    --subsection-color: rgb(32, 32, 32);
+    
 }
 
 
 @media (min-width: 0px) {
-    h1 {
-        font-size: 3em;
-    }
     h2 {
         font-size: 2.25em;
     }
@@ -30,16 +30,14 @@
     li{
         font-size: 1.5em;
     }
+    .banner{
+        min-width:1280px;
+        width:1280px
+    }
 }
 
 
-@media (min-width: 1000px) {
-    h1 {
-        font-size: 4em;
-    }
-    h2 {
-        font-size: 2.5em;
-    }
+@media (min-width: 1280px) {
     h3 {
         font-size: 2.25em;
     }
@@ -58,19 +56,21 @@
     li{
         font-size: 1.5em;
     }
+    .banner{
+        min-width:100%;
+        width:100%;
+    }
 }
 
 * {
-    box-sizing: border-box;
     width: 100%;
     font-family: "Courier New";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 } 
 
 
-h1 {
-    color: var(--gray-color);
-    font-weight: 1000;
-}
 h2 {
     color: var(--gray-color);
     font-weight: 1000;
@@ -88,27 +88,60 @@ p {
 }
 li {
     font-weight: 200;
+
 }
 
 body{
-    background-color: var(--background-color);
     color: var(--gray-color);
+    margin:0px
+}
+
+.whole {
+    display: grid;
+    background-color: var(--background-color);
+    overflow-wrap: normal;
+    padding: 1em;
+    text-align: left;
+}
+
+
+.top {
+    background-color: var(--background-color);
+    overflow-wrap: normal;    
+    position: relative;
+    display:block
     
 }
 
-div{
-    display: flex;
-    align-items: flex-start;
-}
-.whole {
-    display: grid;
-    overflow-wrap: normal;
-    padding-top: 3em;
-    padding-right: 3em;
-    padding-bottom: 3em;
-    padding-left: 3em;
-    text-align: left;
+.top h1 {
+    color: var(--gray-color);
+    font-weight: 1000;
+    font-size: 4em;
     
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    background-color: transparent;
+}
+
+
+.top h2 {
+    font-size: 2.5em;
+    color: var(--gray-color);
+    font-weight: 1000;
+    position: absolute;
+    top: 3%;
+    left: 4%;
+    background-color: transparent;
+}
+
+.fade {
+    position: absolute;
+    background-image: linear-gradient(to top, var(--background-color), rgba(0,0,0,0));
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
 }
 
 .image {
@@ -116,15 +149,37 @@ div{
     margin-right: 10px; /* Adjust the spacing between text and image */
   }
 
-.description {
+.grid-container {
     align-items: left;
     text-align: left;
     display: grid;
-    overflow-wrap: normal;
-    margin-left: 0;
-    margin-right: auto;
-    max-width: 100em;
+    grid-template-columns: auto;
+    row-gap: 2em;
+    overflow-wrap: normal;    
     padding: 2em;
+}
+
+.section {
+    background-color: var(--section-color);
+    align-items: left;
+    text-align: left;
+    display: inline;
+    max-width: 100em;
+    overflow-wrap: normal;    
+    padding: 2em;
+}
+
+
+.subsection {
+    background-color: var(--subsection-color);
+    display: inline-block;
+    max-width: 100em;
+    overflow-wrap: normal;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
 .container {

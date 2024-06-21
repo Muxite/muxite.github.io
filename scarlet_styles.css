@@ -123,6 +123,7 @@ body{
     text-align: left; 
 }
 
+
 .description {
     align-items: left;
     text-align: left;
@@ -141,7 +142,7 @@ body{
 
 .column {
     text-align: left;
-    display: grid;
+    display: flex;
     align-items: left;
     margin-left: 0;
     margin-right: auto;

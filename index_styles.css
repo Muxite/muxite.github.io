@@ -8,9 +8,6 @@
 
 
 @media (min-width: 0px) {
-    h2 {
-        font-size: 2.25em;
-    }
     h3 {
         font-size: 2em;
     }
@@ -130,7 +127,7 @@ html,body
     font-size: 4em;
     margin:0px;
     position: absolute;
-    top: 20%;
+    top: 16%;
     left: 4%;
     background-color: transparent;
 }
@@ -142,7 +139,7 @@ html,body
     font-weight: 1000;
     margin:0px;
     position: absolute;
-    top: 3%;
+    top: 6%;
     left: 4%;
     background-color: transparent;
 }
@@ -195,33 +192,12 @@ html,body
     margin-left: 1em;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.tictactoe-container {
+    align-items: left;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 2em;
+    overflow-wrap: normal;    
+    padding: 2em;
 }
-
-.row {
-    border: 2px solid var(--red-color);
-}
-
-.panel {
-    background-color: var(--background-color);
-    display: none;
-    overflow-wrap: normal;
-}
-
-.accordion {
-    font-weight: 50;
-    display: block;
-    background-color: var(--background-color);
-    color: var(--red-color);
-    cursor: pointer;
-    text-align: center;
-  }
-
-.active, .accordion:hover {
-    background-color: var(--red-color);
-    color: var(--gray-color);
-    font-weight: 1000;
-  }

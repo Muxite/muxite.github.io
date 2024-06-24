@@ -209,7 +209,7 @@ function play_start() {
     display_board();
     
     var first_player = Math.floor(Math.random() * 2); // if 0, the human goes first
-    if (first_player === 2){
+    if (first_player === 1){
         bot_move();
     }
 }
@@ -279,10 +279,10 @@ function bot_move(){
 
 function input(event){
     const clicked = event.target;
-    var new_square = read_square(clicked.id);
+    var new_square = read_square(clicked.id);   
     console.log(new_square);
     player_selection = new_square; //this will be played on the player's turn. Allows for premoving as well.
-    if (played_squares.includes(new_square)) {
+    if (played_squares.includes(new_square) === true) {  // FIX THIS PART
         console.log("invalid, retry");
     } else {
         played_squares.push(new_square); // wont repeat again
@@ -304,5 +304,5 @@ function read_square(square){
 }
 
 new_board();
-//play_start();
+play_start();
 

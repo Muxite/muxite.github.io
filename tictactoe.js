@@ -1,6 +1,15 @@
-
-var board_width = 4, board_height = 4;
+//by Muk Chunpongtong. Initially made for python.
+var board_width = 3;
+var board_height = 3;
 var score_to_win = 3;
+var html_board = []; // a jagged array 
+var container = document.querySelector('.ttt-container');
+var player_color = '#000099';
+var bot_color = '#990000';
+var player_selection;
+var board = [];
+var played_squares = [];
+var winner = 0;
 
 // .copy() doesnt work for jagged
 function jl_copy(t_list) {
@@ -94,11 +103,7 @@ function win_check(board_w, board_h, t_board, updated_square, required_score) {
     return [false, looking_for, performance.now() - start];
 }
 
-function display_board(to_display) {
-    for (var i = 0; i < to_display.length; i++) {
-        console.log(to_display[i]);
-    }
-}
+
 
 function bot(foresight, board_w, board_h, board, team, enemy, required_score, level) {
     // literally simulate a game in its head
@@ -168,7 +173,7 @@ function bot(foresight, board_w, board_h, board, team, enemy, required_score, le
                     // play
                     var bb = jl_copy(b);
                     bb[r_empty[1]][r_empty[0]] = enemy;
-                    ns += sum(bot(foresight, board_w, board_h, bb, team, enemy, required_score, level + 1));
+                    ns += bot(foresight, board_w, board_h, bb, team, enemy, required_score, level + 1).reduce((a, b) => a + b, 0);
                 }
                 scores[i] = ns / empties.length;
             }
@@ -192,65 +197,112 @@ function bot(foresight, board_w, board_h, board, team, enemy, required_score, le
     }
 }
 
-function play() {
-    while (true) {
-        var board = [];
-        for (var a = 0; a < board_height; a++) {
-            var sub = [];
-            for (var b = 0; b < board_width; b++) {
-                sub.push(0);
-            }
-            board.push(sub);
+function play_start() {
+    board = []; // jagged array
+    for (var a = 0; a < board_height; a++) {
+        var sub = [];
+        for (var b = 0; b < board_width; b++) {
+            sub.push(0);
         }
-        console.log("START");
-        display_board(board);
-        var played_squares = [];
-        // as many turns as there are squares
-        var first_player = Math.floor(Math.random() * 2); // if 0, the human goes first
-        var winner = 0;
-        for (var turns = 0; turns < board_width * board_height * 2; turns++) {
-            if (turns % 2 === first_player) {
-                // human plays
-                console.log("HUMAN PLAYS");
-                while (true) {
-                    var new_square = [parseInt(prompt("x:")), parseInt(prompt("y:"))];
-                    if (played_squares.includes(new_square)) {
-                        console.log("invalid, retry");
-                    } else {
-                        played_squares.push(new_square); // wont repeat again
-                        board[new_square[1]][new_square[0]] = 1; // player is 1, bot is 2
-                        if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
-                            console.log("FINISHED");
-                            winner = 1;
-                        }
-                        display_board(board);
-                        break;
-                    }
-                }
-            } else {
-                // bot plays
-                console.log("BOT PLAYS");
-                var new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1);
-                played_squares.push(new_square); // wont repeat again
-                board[new_square[1]][new_square[0]] = 2; // player is 1, bot is 2
-                console.log(new_square);
-                if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
-                    console.log("***FINISHED***");
-                    winner = 2;
-                }
-                display_board(board);
-            }
-
-            if (winner !== 0) {
-                if (winner === 1) {
-                    console.log("**PLAYER WON**");
-                } else {
-                    console.log("**BOT WON**");
-                }
-                break;
-            }
-        }
+        board.push(sub);
+    }
+    display_board();
+    
+    var first_player = Math.floor(Math.random() * 2); // if 0, the human goes first
+    if (first_player === 2){
+        bot_move();
     }
 }
 
-play();
+function display_board() {
+    var alloted_width = container.offsetWidth;    
+    for (var y = 0; y < board_height; y++){
+        for (var x = 0; x < board_width; x++){
+            if (board[y][x] === 0){
+                //do nothing
+            }
+            else if (board[y][x] === 1){
+                html_board[y][x].style.background = player_color;
+            }
+            else if (board[y][x] === 2){
+                html_board[y][x].style.background = bot_color;
+            }
+        }
+    }
+    console.log(board);
+}
+
+function new_board() {
+    for (var a = 0; a < html_board.length; a++) {
+        for (var b = 0; b < html_board[a].length; b++) {
+            html_board[a][b].remove();
+        }
+    }
+    html_board = []; // clear the board
+    
+    for (var y = 0; y < board_height; y++){
+        board[y] = [];
+        for (var x = 0; x < board_width; x++){
+            board[y][x] = 0;
+
+        }
+    }
+
+    for (var y = 0; y < board_height; y++){
+        html_board[y] = [];
+        for (var x = 0; x < board_width; x++){
+            html_board[y][x] = document.createElement("button");
+            html_board[y][x].classList.add('ttt-box');
+            html_board[y][x].id = x.toString() + "," + y.toString();
+            html_board[y][x].addEventListener('click', input);
+            container.appendChild(html_board[y][x]);
+        }
+    }
+    var adder = '';
+    for (var x = 0; x < board_width; x++){
+        adder += 'auto ';
+    }
+    container.style.gridTemplateColumns = adder;
+    display_board();
+}
+
+function bot_move(){
+    var new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1);
+    played_squares.push(new_square); // wont repeat again
+    board[new_square[1]][new_square[0]] = 2; // player is 1, bot is 2
+    display_board();
+    if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
+        console.log("***FINISHED***");
+        winner = 2;
+    }
+}
+
+function input(event){
+    const clicked = event.target;
+    var new_square = read_square(clicked.id);
+    console.log(new_square);
+    player_selection = new_square; //this will be played on the player's turn. Allows for premoving as well.
+    if (played_squares.includes(new_square)) {
+        console.log("invalid, retry");
+    } else {
+        played_squares.push(new_square); // wont repeat again
+        board[new_square[1]][new_square[0]] = 1; // player is 1, bot is 2
+        display_board();
+        if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
+            console.log("***FINISHED***");
+            winner = 1;
+        }else{
+            bot_move();
+        }   
+    }
+
+}
+
+function read_square(square){
+    var text = square.split(",");
+    return [parseInt(text[0]), parseInt(text[1])];  // x and y
+}
+
+new_board();
+//play_start();
+

@@ -192,12 +192,3 @@ html,body
     margin-left: 1em;
 }
 
-.tictactoe-container {
-    align-items: left;
-    text-align: left;
-    display: grid;
-    grid-template-columns: auto;
-    row-gap: 2em;
-    overflow-wrap: normal;    
-    padding: 2em;
-}

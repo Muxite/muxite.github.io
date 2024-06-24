@@ -7,16 +7,13 @@ var webname_ratio = 0.03;
 const banners = ["assets/480 120 banner 2x.gif", "assets/A-star banner.gif"]
 function titleChange(){
     var width = innerWidth;
-    console.log(width);
     if (width > 1280){
         title.style.fontSize = title_ratio*width/title_name.length + 'em';
         webname.style.fontSize = webname_ratio*width/webname.innerHTML.length + 'em';
-        console.log(title.style.fontSize);
     }
     else{
         title.style.fontSize = title_ratio/title_name.length*1280 + 'em';
         webname.style.fontSize = webname_ratio/webname.innerHTML.length*1280 + 'em';
-        console.log(title.style.fontSize);
     }
 }
 

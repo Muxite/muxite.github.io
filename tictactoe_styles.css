@@ -1,12 +1,43 @@
-.tictactoe-container {
-    align-items: left;
-    text-align: left;
-    display: grid;
-    /*the grid size will be changed later*/
-    grid-template-columns: auto, auto, auto;
-    grid-template-rows: auto, auto, auto;
-    row-gap: 2em;
-    column-gap: 2em;
-    overflow-wrap: normal;    
-    padding: 2em;
+:root{
+    --red-color: rgb(177,0,0);
+    --gray-color: rgb(205, 205, 205);
+    --background-color: rgb(14, 14, 14, 1);
+    --section-color: rgb(22, 22, 22);
+    --subsection-color: rgb(32, 32, 32);
+
 }
+
+.ttt-container {
+    display: grid;
+    background-color: var(--section-color);
+    text-align: left;
+    /*the grid size will be changed later*/
+    grid-template-columns: auto auto auto;
+    row-gap: 1em;
+    column-gap: 1em;  
+    padding: 1em;
+    width: 100%;
+    margin: 0em;    
+}
+
+.ttt-box {
+    background-color: #f0f0f0; /* Example background color */
+    border: 1px solid #333; /* Example border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This pseudo-element forces the aspect ratio to 1:1 */
+.ttt-box::before {
+    content: '';
+    float: left;
+    padding-top: 100%;
+  }
+  
+  /* Clear the float */
+  .ttt-box::after {
+    content: '';
+    display: block;
+    clear: both;
+  }

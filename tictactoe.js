@@ -1,6 +1,6 @@
 //by Muk Chunpongtong. Initially made for python.
 var board_width = 3;
-var board_height = 3;
+var board_height = 4;
 var score_to_win = 3;
 var html_board = []; // a jagged array 
 var container = document.querySelector('.ttt-container');
@@ -10,6 +10,14 @@ var player_selection;
 var board = [];
 var played_squares = [];
 var winner = 0;
+var started = false;
+
+function contains_subarray(main_array, sub_array) {
+    return main_array.some(arr =>
+      Array.isArray(arr) && sub_array.every((subElem, index) => arr[index] === subElem)
+    );
+  }
+  
 
 // .copy() doesnt work for jagged
 function jl_copy(t_list) {
@@ -114,7 +122,7 @@ function bot(foresight, board_w, board_h, board, team, enemy, required_score, le
     for (var row = 0; row < board.length; row++) {
         for (var column = 0; column < board[row].length; column++) {
             if (board[row][column] === 0) {
-                empties.push([column, row]); // lists go (y, x)
+                empties.push([column, row]); // lists go (x, y)
                 scores.push(0);
             }
         }
@@ -210,7 +218,7 @@ function play_start() {
     
     var first_player = Math.floor(Math.random() * 2); // if 0, the human goes first
     if (first_player === 1){
-        bot_move();
+        setTimeout(bot_move, 500);
     }
 }
 
@@ -229,10 +237,11 @@ function display_board() {
             }
         }
     }
-    console.log(board);
 }
 
 function new_board() {
+    winner = 0;
+    board = []
     for (var a = 0; a < html_board.length; a++) {
         for (var b = 0; b < html_board[a].length; b++) {
             html_board[a][b].remove();
@@ -269,40 +278,68 @@ function new_board() {
 function bot_move(){
     var new_square = bot(2, board_width, board_height, board, 2, 1, score_to_win, 1);
     played_squares.push(new_square); // wont repeat again
+    console.log(played_squares.length);
     board[new_square[1]][new_square[0]] = 2; // player is 1, bot is 2
     display_board();
     if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
         console.log("***FINISHED***");
         winner = 2;
+        started = false;
+        played_squares = [];
     }
+    else if (played_squares.length >= (board_height * board_width)){
+        //its a draw
+        console.log("***FINISHED***");
+        started = false;
+        played_squares = [];
+    }
+    
 }
 
 function input(event){
-    const clicked = event.target;
-    var new_square = read_square(clicked.id);   
-    console.log(new_square);
-    player_selection = new_square; //this will be played on the player's turn. Allows for premoving as well.
-    if (played_squares.includes(new_square) === true) {  // FIX THIS PART
-        console.log("invalid, retry");
-    } else {
-        played_squares.push(new_square); // wont repeat again
-        board[new_square[1]][new_square[0]] = 1; // player is 1, bot is 2
-        display_board();
-        if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
-            console.log("***FINISHED***");
-            winner = 1;
-        }else{
-            bot_move();
-        }   
+    if (started === false){
+        started = true;
+        new_board();
+        play_start();
     }
-
+    else{
+        const clicked = event.target;
+        var new_square = read_square(clicked);   
+        player_selection = new_square; //this will be played on the player's turn. Allows for premoving as well.
+        if (contains_subarray(played_squares, new_square) === true) {
+            console.log("invalid, retry");
+        } else {
+            played_squares.push(new_square); // wont repeat again
+            console.log(played_squares.length);
+            board[new_square[1]][new_square[0]] = 1; // player is 1, bot is 2
+            display_board();
+            if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
+                console.log("***FINISHED***");
+                winner = 1;
+                started = false;
+                played_squares = [];
+                // win code
+            } 
+            // no remaining places and no winner
+            else if (played_squares.length >= (board_height * board_width)){
+                //its a draw
+                console.log("***FINISHED***");
+                started = false;
+                played_squares = [];
+            }
+            
+            else{
+                setTimeout(bot_move, 500);
+            }   
+        }
+    }
 }
 
 function read_square(square){
-    var text = square.split(",");
+    var text = square.id.split(",");
     return [parseInt(text[0]), parseInt(text[1])];  // x and y
 }
 
 new_board();
-play_start();
+
 

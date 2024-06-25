@@ -1,7 +1,7 @@
 //by Muk Chunpongtong. Initially made for python.
-var board_width = 3;
-var board_height = 4;
-var score_to_win = 3;
+var board_width = 10;
+var board_height = 10;
+var score_to_win = 5;
 var html_board = []; // a jagged array 
 var container = document.querySelector('.ttt-container');
 var player_color = '#000099';
@@ -218,7 +218,7 @@ function play_start() {
     
     var first_player = Math.floor(Math.random() * 2); // if 0, the human goes first
     if (first_player === 1){
-        setTimeout(bot_move, 500);
+        setTimeout(bot_move, 100);
     }
 }
 
@@ -329,7 +329,7 @@ function input(event){
             }
             
             else{
-                setTimeout(bot_move, 500);
+                setTimeout(bot_move, 100);
             }   
         }
     }

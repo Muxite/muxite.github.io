@@ -1,10 +1,50 @@
 :root{
     --red-color: rgb(177,0,0);
     --gray-color: rgb(205, 205, 205);
+    --hover-color: rgb(50, 50, 255);
     --background-color: rgb(14, 14, 14, 1);
     --section-color: rgb(22, 22, 22);
     --subsection-color: rgb(32, 32, 32);
+    --input-box-color: rgb(50, 50, 50);
+}
 
+.settings-container {
+    display: grid;
+    background-color: var(--section-color);
+    text-align: left;
+    align-items: flex-start;
+    grid-template-columns: auto auto auto;
+    row-gap: 1em;
+    column-gap: 1em;  
+    padding: 1em;
+    width: 100%;
+    margin: 0em;    
+}
+.settings-input {
+    font-size: 2em;
+    color: var(--gray-color); 
+    background-color: var(--input-box-color);
+    display: inline;
+    width: 2em;
+    min-height: 1.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-button {
+    font-size: 2em;
+    color: var(--subsection-color);
+    background-color: var(--gray-color); 
+    display: inline;
+    width: 2em;
+    min-height: 1.5em;
+    justify-content: center;
+    align-items: center;
+}
+.settings-button:hover {
+    background-color: var(--red-color);
+    color: var(--gray-color);
+    font-weight: 1000;
 }
 
 .ttt-container {
@@ -13,20 +53,25 @@
     text-align: left;
     /*the grid size will be changed later*/
     grid-template-columns: auto auto auto;
-    row-gap: 1em;
-    column-gap: 1em;  
+    row-gap: 0.5em;
+    column-gap: 0.5em;  
     padding: 1em;
     width: 100%;
     margin: 0em;    
 }
 
 .ttt-box {
-    background-color: #f0f0f0; /* Example background color */
-    border: 1px solid #333; /* Example border */
+    background-color: var(--gray-color); 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.ttt-box:hover {
+    background-color: var(--hover-color);
+    color: var(--gray-color);
+    font-weight: 1000;
+}
+
 
 /* This pseudo-element forces the aspect ratio to 1:1 */
 .ttt-box::before {

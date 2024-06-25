@@ -4,6 +4,10 @@ var board_height = 10;
 var score_to_win = 5;
 var html_board = []; // a jagged array 
 var container = document.querySelector('.ttt-container');
+var width_input = document.getElementById('width');
+var height_input = document.getElementById('height');
+var length_input = document.getElementById('length');
+var enter_button = document.getElementById('enter');
 var player_color = '#000099';
 var bot_color = '#990000';
 var player_selection;
@@ -11,6 +15,8 @@ var board = [];
 var played_squares = [];
 var winner = 0;
 var started = false;
+
+
 
 function contains_subarray(main_array, sub_array) {
     return main_array.some(arr =>
@@ -335,11 +341,27 @@ function input(event){
     }
 }
 
+function send_settings(){
+    if (2<width_input.value<11 &&
+        2<height_input.value<11  &&
+        2<height_input.value)
+    {
+        board_width = width_input.value;
+        board_height = height_input.value;
+        score_to_win = length_input.value;
+        started = false;
+        played_squares = [];
+        new_board();
+    }
+    
+}
+
 function read_square(square){
     var text = square.id.split(",");
     return [parseInt(text[0]), parseInt(text[1])];  // x and y
 }
 
+enter_button.addEventListener("click", send_settings);
 new_board();
 
 

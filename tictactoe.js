@@ -1,7 +1,7 @@
 //by Muk Chunpongtong. Initially made for python.
-var board_width = 10;
-var board_height = 10;
-var score_to_win = 5;
+var board_width = 6;
+var board_height = 6;
+var score_to_win = 4;
 var html_board = []; // a jagged array 
 var container = document.querySelector('.ttt-container');
 var width_input = document.getElementById('width');
@@ -361,7 +361,7 @@ function read_square(square){
     return [parseInt(text[0]), parseInt(text[1])];  // x and y
 }
 
-enter_button.addEventListener("click", send_settings);
-new_board();
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    enter_button.addEventListener("click", send_settings);
+    new_board();
+}, false);

@@ -1,11 +1,15 @@
 :root{
     --red-color: rgb(177,0,0);
-    --gray-color: rgb(205, 205, 205);
+    --gray-color: #cdcdcd;
     --hover-color: rgb(50, 50, 255);
     --background-color: rgb(14, 14, 14, 1);
-    --section-color: rgb(22, 22, 22);
+    --section-color: #171717;
     --subsection-color: rgb(32, 32, 32);
     --input-box-color: rgb(50, 50, 50);
+}
+
+body {
+    background-color: var(--background-color);
 }
 
 .settings-container {
@@ -13,7 +17,7 @@
     background-color: var(--section-color);
     text-align: left;
     align-items: flex-start;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto;
     row-gap: 0.5em;
     column-gap: 0.5em;  
     padding: 1em;
@@ -43,15 +47,25 @@
     color: var(--subsection-color);
     background-color: var(--gray-color); 
     display: inline;
-    width: 4em;
     min-height: 1.5em;
     justify-content: center;
-    align-items: center;
+    text-align: center
 }
 .settings-button:hover {
     background-color: var(--red-color);
     color: var(--gray-color);
     font-weight: 1000;
+}
+
+.win-text {
+    font-size: 2em;
+    display: inline-block;
+    align-items: center;
+    overflow-wrap: normal;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-right: 0.2em;
+    margin-left: 0.2em;
 }
 
 .ttt-container {
@@ -63,7 +77,8 @@
     row-gap: 0.5em;
     column-gap: 0.5em;  
     padding: 1em;
-    width: 100%;
+    width: 100px;
+    max-width: 100em;
     margin: 0em;    
 }
 

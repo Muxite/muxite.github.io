@@ -8,8 +8,13 @@ var width_input = document.getElementById('width');
 var height_input = document.getElementById('height');
 var length_input = document.getElementById('length');
 var enter_button = document.getElementById('enter');
+var shrink_button = document.getElementById('shrink');
+var expand_button = document.getElementById('expand');
+var win_text = document.querySelector('.win-text');
 var player_color = '#000099';
 var bot_color = '#990000';
+var base_color = '#171717';
+var gray_color = '#cdcdcd';
 var player_selection;
 var board = [];
 var played_squares = [];
@@ -233,7 +238,7 @@ function display_board() {
     for (var y = 0; y < board_height; y++){
         for (var x = 0; x < board_width; x++){
             if (board[y][x] === 0){
-                //do nothing
+                html_board[y][x].style.background = gray_color;
             }
             else if (board[y][x] === 1){
                 html_board[y][x].style.background = player_color;
@@ -242,6 +247,32 @@ function display_board() {
                 html_board[y][x].style.background = bot_color;
             }
         }
+    }
+    console.log(winner);
+    switch (winner) {
+        case 0:
+            container.style.background = base_color;
+            win_text.style.color = base_color;
+            win_text.style.display = 'none';
+            break;
+        case 1:
+            container.style.background = player_color;
+            win_text.style.color = player_color;
+            win_text.style.display = 'inline';
+            win_text.innerHTML = 'PLAYER WON';
+            break;
+        case 2:
+            container.style.background = bot_color;
+            win_text.style.display = 'inline';
+            win_text.style.color = bot_color;
+            win_text.innerHTML = 'BOT WON';
+            break;
+        case 3:
+            container.style.background = gray_color;
+            win_text.style.color = gray_color;
+            win_text.style.display = 'inline';
+            win_text.innerHTML = 'TIED';
+            break;
     }
 }
 
@@ -286,7 +317,6 @@ function bot_move(){
     played_squares.push(new_square); // wont repeat again
     console.log(played_squares.length);
     board[new_square[1]][new_square[0]] = 2; // player is 1, bot is 2
-    display_board();
     if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
         console.log("***FINISHED***");
         winner = 2;
@@ -296,10 +326,11 @@ function bot_move(){
     else if (played_squares.length >= (board_height * board_width)){
         //its a draw
         console.log("***FINISHED***");
+        winner = 3;
         started = false;
         played_squares = [];
     }
-    
+    display_board();
 }
 
 function input(event){
@@ -318,7 +349,7 @@ function input(event){
             played_squares.push(new_square); // wont repeat again
             console.log(played_squares.length);
             board[new_square[1]][new_square[0]] = 1; // player is 1, bot is 2
-            display_board();
+            
             if (win_check(board_width, board_height, board, new_square, score_to_win)[0]) {
                 console.log("***FINISHED***");
                 winner = 1;
@@ -337,9 +368,11 @@ function input(event){
             else{
                 setTimeout(bot_move, 100);
             }   
+            display_board();
         }
     }
 }
+
 
 function send_settings(){
     if (2<width_input.value<11 &&
@@ -353,7 +386,6 @@ function send_settings(){
         played_squares = [];
         new_board();
     }
-    
 }
 
 function read_square(square){
@@ -361,7 +393,18 @@ function read_square(square){
     return [parseInt(text[0]), parseInt(text[1])];  // x and y
 }
 
+function shrink(){
+    container.style.width = parseInt(container.style.width)/1.1 + "%";
+}
+
+function expand(){
+    container.style.width = parseInt(container.style.width)*1.1 + "%";
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    container.style.width = 100 + "%";
     enter_button.addEventListener("click", send_settings);
+    shrink_button.addEventListener("click", shrink);
+    expand_button.addEventListener("click", expand);
     new_board();
 }, false);

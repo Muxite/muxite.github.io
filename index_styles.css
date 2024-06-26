@@ -177,7 +177,7 @@ html,body
     align-items: left;
     text-align: left;
     display: inline;
-    max-width: 80em;
+    max-width: 100em;
     overflow-wrap: normal;    
     padding: 2em;
 }
@@ -186,7 +186,7 @@ html,body
 .subsection {
     background-color: var(--subsection-color);
     display: inline-block;
-    max-width: 180em;
+    max-width: 100em;
     overflow-wrap: normal;
     padding: 1em;
     margin-top: 1em;

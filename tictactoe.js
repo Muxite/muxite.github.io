@@ -375,9 +375,9 @@ function input(event){
 
 
 function send_settings(){
-    if (2<width_input.value<11 &&
-        2<height_input.value<11  &&
-        2<height_input.value)
+    if (width_input.value<15 &&
+        height_input.value<15  &&
+        length_input.value<15)
     {
         board_width = width_input.value;
         board_height = height_input.value;

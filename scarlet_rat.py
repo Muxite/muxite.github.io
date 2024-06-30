@@ -183,8 +183,9 @@ def create_index():  # use the template and all chunks to form index.html
 
 
 def make():
-    for i in range(0, 5):
+    for i in range(0, 20):
         html_make_chunk()
 
 
+make()
 create_index()

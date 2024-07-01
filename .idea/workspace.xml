@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-183742.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-183758.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-183806.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-183852.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-183904.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184119.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184146.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184204.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184212.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184224.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184232.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184301.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184314.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184416.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184551.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184647.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184743.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184805.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184818.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pile/2024-06-29-184829.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scarlet_rat.py" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scarlet_rat_pile.html" beforeDir="false" afterPath="$PROJECT_DIR$/scarlet_rat_pile.html" afterDir="false" />
-    </list>
+    <list default="true" id="e7f6dbf0-2318-4d27-bc4e-eb0b8dc7ea9d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

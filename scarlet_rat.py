@@ -187,5 +187,4 @@ def make():
         html_make_chunk()
 
 
-make()
 create_index()

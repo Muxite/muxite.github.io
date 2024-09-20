@@ -4,6 +4,8 @@
     --background-color: rgb(14, 14, 14, 1);
     --section-color: rgb(22, 22, 22);
     --subsection-color: rgb(32, 32, 32);
+    --table-color: rgb(44, 44, 44);
+    --link-color: rgb(100, 100, 255);
 }
 
 
@@ -79,19 +81,52 @@ h3 {
 }
 h5 {
     color: var(--gray-color);
-    font-weight: 500;
+    font-weight: 600;
 }
 p {
     font-weight: 500;
 }
 a {
-    font-weight: 500;
+    color: var(--link-color);
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--red-color);
 }
 li {
     font-weight: 200;
     margin-left: 2em;
 }
 
+table {
+    background-color: var(--table-color);
+    font-weight: 500;
+    display: inline-block;
+    width: 50%;
+    overflow-wrap: normal;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    border-collapse: collapse;
+  }
+  th, td {
+    text-align: left; /* Align text to the left */
+  }
+  th {
+    background-color: var(--table-color);
+  }
+  tr:nth-child(odd) {
+    background-color: var(--subsection-color);
+  }
+  tr:nth-child(even) {
+    background-color: var(--section-color);
+  }
+  tr:hover {
+    background-color: var(--red-color);
+  }
 
 html,body
 {
@@ -158,9 +193,18 @@ html,body
 }
 
 .image {
-    flex-shrink: 0; /* Prevents the image from shrinking */
-    margin-right: 10px; /* Adjust the spacing between text and image */
+    margin: 0.5em;
+    width: auto;
+    height: auto;
   }
+
+.image:hover {
+    border-style: solid;
+    border-width: 4px;
+    border-color: var(--red-color);
+    margin: 0.5em;
+    transform: scale(1.07); /* make it bigger */
+}
 
 .grid-container {
     align-items: left;
@@ -177,16 +221,17 @@ html,body
     align-items: left;
     text-align: left;
     display: inline;
-    max-width: 100em;
+    max-width: 120em;
     overflow-wrap: normal;    
     padding: 2em;
+    
 }
 
 
 .subsection {
     background-color: var(--subsection-color);
     display: inline-block;
-    max-width: 100em;
+    max-width: 120em;
     overflow-wrap: normal;
     padding: 1em;
     margin-top: 1em;

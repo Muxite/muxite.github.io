@@ -11,7 +11,144 @@
 
 <div class="whole">
     <div class="grid-container" id="gridContainer">
-        
+        <div class="section">
+            <div class="subsection">
+                <a href="https://github.com/Muxite/AutoSpotCV">(AutoSpotCV GitHub Repository)</a>
+                <h5>Main Goal</h5>
+                <p>Create and demonstrate functional computer vision scripts with reasonable sensitivity and accuracy.</p>
+                <br>
+                <h5>Short Term Goal</h5>
+                <p>Create a "fan-cam maker" program to track faces and crop videos to focus on a person.</p>
+                <ul>
+                    <li>Track a face and create a running average of their recognition result to identify the path each face travels in a video, as well as when cameras cut from scene to scene.</li>
+                    <li>Create a box around the face, and crop that as the output video.</li>
+                    <li>Add interpolation (linear or bezier curve) to smoothen the motion.</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3>File-based LBPH Face Recognition Trainers</h3>
+                <p>(face_rec\face_rec_for_filesV2.py, face_rec\face_rec_for_filesV1.py)</p>
+                <br>
+                <p>Both scripts use LBPH face recognition to train using a directory of faces.
+                    V2 is the latest version and uses classes. It detects faces in images, splits the data set, 
+                    trains LBPH, and tests the LBPH, with autosave features at each stage so it can pick up where it left off.
+                    V2 produces graphs after it finishes. The LBPH .yml file can be used by other scripts.
+                    LBPH leaves much to be desired in terms of sensitivity. 
+                </p>
+                <table>
+                    <tr>
+                    <th>Name</th>
+                    <th>Sensitivity</th>
+                    </tr>
+                    <tr>
+                    <td>Brad Pitt</td>
+                    <td>0.8519</td>
+                    </tr>
+                    <tr>
+                    <td>Chris Hemsworth</td>
+                    <td>0.7381</td>
+                    </tr>
+                    <tr>
+                    <td>Ed Sheeran</td>
+                    <td>0.6222</td>
+                    </tr>
+                    <tr>
+                    <td>Gaeul</td>
+                    <td>0.2000</td>
+                    </tr>
+                    <tr>
+                    <td>Jensen Huang</td>
+                    <td>0.8462</td>
+                    </tr>
+                    <tr>
+                    <td>Jimin</td>
+                    <td>0.4468</td>
+                    </tr>
+                    <tr>
+                    <td>Kim K</td>
+                    <td>0.6977</td>
+                    </tr>
+                    <tr>
+                    <td>Leeseo</td>
+                    <td>0.5667</td>
+                    </tr>
+                    <tr>
+                    <td>Leonardo DiCaprio</td>
+                    <td>0.6667</td>
+                    </tr>
+                    <tr>
+                    <td>Lisa</td>
+                    <td>0.5714</td>
+                    </tr>
+                    <tr>
+                    <td>Lisa Su</td>
+                    <td>0.5333</td>
+                    </tr>
+                    <tr>
+                    <td>Liz</td>
+                    <td>0.6667</td>
+                    </tr>
+                    <tr>
+                    <td>Morgan Freeman</td>
+                    <td>0.7500</td>
+                    </tr>
+                    <tr>
+                    <td>Naheed Nenshi</td>
+                    <td>0.7143</td>
+                    </tr>
+                    <tr>
+                    <td>Rei</td>
+                    <td>0.3548</td>
+                    </tr>
+                    <tr>
+                    <td>Taylor Swift</td>
+                    <td>0.8125</td>
+                    </tr>
+                    <tr>
+                    <td>Whitney Houston</td>
+                    <td>0.5938</td>
+                    </tr>
+                    <tr>
+                    <td>Wonyoung</td>
+                    <td>0.5667</td>
+                    </tr>
+                    <tr>
+                    <td>Yujin</td>
+                    <td>0.2927</td>
+                    </tr>
+                    <br>
+                </table>
+                <img class="image" src="assets/Jensen.png" style="max-width:30%;max-height:20em;">
+                <img class="image" src="assets/Brad_Pitt_predictions.png" style="max-width:30%;max-height:20em;">
+                <img class="image" src="assets/Gaeul Predictions.png" style="max-width:30%;max-height:20em;">
+                <img class="image" src="assets/Taylor Swift_predictions.png" style="max-width:30%;max-height:20em;">
+                <img class="image" src="assets/Lisa Su_predictions.png" style="max-width:30%;max-height:20em;">
+                <img class="image" src="assets/Yujin_predictions.png" style="max-width:30%;max-height:20em;">
+                
+                <br>
+                </div>
+                <div class="subsection">
+                <h3>Image Downloader (FINISHED)</h3>
+                <p>(utilities\downloader.py)</p>
+                <br>
+                <p>Uses Selenium Webdriver to download large numbers of images from Google Images based on a search term. 
+                    Uses multithreading to improve performance (0.695 seconds per image at 10 threads and 50 images). 
+                    Occasionally double-downloads images.
+                </p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/U-La3EGI8As?si=Dq13O2z-lcNoP9sN" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+                </div>
+                <div class="subsection">
+                <h3>Image Downloader (FINISHED)</h3>
+                <p>(utilities\face_rec_file_manager.py)</p>
+                <br>
+                <p>Splits image directories into training and testing datasets, or convert all images to fit in a specified size.
+                </p>
+                </div>
+        </div>
 
     </div>
     

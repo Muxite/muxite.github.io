@@ -11,13 +11,10 @@
 
 @media (min-width: 0px) {
     h3 {
-        font-size: 2em;
+        font-size: 1.6em;
     }
     h5 {
-        font-size: 1.5em;
-    }
-    .accordion{
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
     p{
         font-size: 1em;
@@ -38,13 +35,10 @@
 
 @media (min-width: 1280px) {
     h3 {
-        font-size: 2em;
+        font-size: 1.6em;
     }
     h5 {
-        font-size: 1.5em;
-    }
-    .accordion{
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
     p{
         font-size: 1em;
@@ -64,10 +58,12 @@
 
 * {
     width: 100%;
+    background-color: var(--background-color);
     font-family: "Courier New";
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 } 
 
 
@@ -99,34 +95,7 @@ li {
     margin-left: 2em;
 }
 
-table {
-    background-color: var(--table-color);
-    font-weight: 500;
-    display: inline-block;
-    width: 50%;
-    overflow-wrap: normal;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-    border-collapse: collapse;
-  }
-  th, td {
-    text-align: left; /* Align text to the left */
-  }
-  th {
-    background-color: var(--table-color);
-  }
-  tr:nth-child(odd) {
-    background-color: var(--subsection-color);
-  }
-  tr:nth-child(even) {
-    background-color: var(--section-color);
-  }
-  tr:hover {
-    background-color: var(--red-color);
-  }
+
 
 html,body
 {
@@ -185,6 +154,7 @@ html,body
 .fade {
     position: absolute;
     margin:0px;
+    background-color: transparent;
     background-image: linear-gradient(to top, var(--background-color), rgba(0,0,0,0));
     bottom: 0%;
     left: 0%;
@@ -211,32 +181,76 @@ html,body
     text-align: left;
     display: grid;
     grid-template-columns: auto;
-    row-gap: 2em;
+    row-gap: 1em;
     overflow-wrap: normal;    
-    padding: 2em;
+    padding: 1em;
 }
 
 .section {
     background-color: var(--section-color);
     align-items: left;
     text-align: left;
-    display: inline;
+    display: inline-block;
     max-width: 120em;
     overflow-wrap: normal;    
-    padding: 2em;
+    margin: 0.5em;
+    padding: 1em;
     
 }
 
+.section * {
+    background-color: var(--section-color);
+}
+
+.accordion-content {
+    display: none;
+}
+.accordion-header {
+    cursor: pointer;
+}
+
+.accordion-header:hover {
+    color: var(--red-color);
+}
 
 .subsection {
     background-color: var(--subsection-color);
     display: inline-block;
     max-width: 120em;
     overflow-wrap: normal;
-    padding: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    margin-left: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
 }
 
+.subsection * {
+    background-color: var(--subsection-color);
+}
+
+table {
+    background-color: var(--table-color);
+    font-weight: 500;
+    display: inline-block;
+    width: 50%;
+    overflow-wrap: normal;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left; /* Align text to the left */
+}
+th {
+    background-color: var(--table-color);
+}
+tr:nth-child(odd) {
+    background-color: var(--subsection-color);
+}
+tr:nth-child(even) {
+    background-color: var(--section-color);
+}
+tr:hover {
+    background-color: var(--red-color);
+}

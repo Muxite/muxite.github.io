@@ -19,11 +19,11 @@
 
 <div class="whole">
 <div class="grid-container">
-<div class="section">
+<div class="section" id="default-open">
     <h3>Who am I?</h3>
     <p>I am a 17 year old attending UBC Vancouver for Applied Science (Engineering). I hope to major in Computer Engineering. 
-    I do a variety of engineering related projects and hobbies. I program projects, create Arduino projects, develop RC planes, make Youtube videos, and solve problems using 3D printing. 
-    I use Fusion 360 for CAD. I led an engineering club for my last 2 years of High School. I enjoy City Pop, Taylor Swift, Teresa Teng, J-pop, K-pop, and Mandopop.
+    I have a diverse range of projects, from purely software, to Arduino, RC planes, and 3D printing/design.
+    I use Fusion 360 for CAD. I led an engineering club for my last 2 years of High School. I enjoy K-pop, Taylor Swift music, City Pop, J-pop, and Mandopop.
     </p>
     <br>
     <p>I speak English and Thai (but I can't read Thai) and am learning Mandarin/Chinese (HSK 3). I also know American Sign Language (took ASL 25).</p>
@@ -31,22 +31,21 @@
 </div>
 
 
-<div class="section">
+<div class="section" id="default-open">
 <h3>Main Python Projects:</h3>
 <p>My Python projects typically involve webscraping, image manipulation, or computer vision</p>
 <br>
 <ul>
     
-    <div class="subsection"><h5>AutoSpotCV</h5><p>Various computer vision scripts, with face detection and recognition,
+    <div class="subsection" id="default-open"><h5>AutoSpotCV</h5><p>Various computer vision scripts, with face detection and recognition,
          as well as scripts for downloading training data off the internet. WIP, it's my biggest personal project.</p>
-        <a href="https://muxite.github.io/autospotcv.html">(utoSpotCV Explanation)</a>
-        <a href="https://github.com/Muxite/AutoSpotCV">(AutoSpotCV GitHub Repository)</a>
+        <a href="https://muxite.github.io/autospotcv.html">(AutoSpotCV Explanation)</a>
+        <a href="https://github.com/Muxite/AutoSpotCV" target="_blank">(AutoSpotCV GitHub Repository)</a>
         <br>
-        <img class="image" src="assets/Screenshot 2024-09-08 234522.png" style="float:left;width:25em;height:25em;">
-        <img class="image" src="assets/Jensen.png" style="float:left;width:12em;height:12em;">
-        <img class="image" src="assets/Taylor Swift_predictions.png" style="float:left;width:12em;height:12em;">
-        <img class="image" src="assets/Lisa Su_predictions.png" style="float:left;width:12em;height:12em;">
-        <img class="image" src="assets/Yujin_predictions.png" style="float:left;width:12em;height:12em;">
+        <img class="image" src="assets/Jensen.png" style="float:left;max-width:40%;max-height:200px;">
+        <img class="image" src="assets/Taylor Swift_predictions.png" style="float:left;max-width:45%;max-height:200px;">
+        <img class="image" src="assets/Lisa Su_predictions.png" style="float:left;max-width:45%;max-height:200px;">
+        <img class="image" src="assets/Yujin_predictions.png" style="float:left;max-width:45%;max-height:200px;">
     </div>
 
     <div class="subsection"><h5>Scarlet Rat</h5> <p>Scrape the web using Selenium and uploads results to this website.</p>
@@ -60,19 +59,19 @@
     
     <div class="subsection"><h5>A-star</h5> <p>Pathfinding in any number of dimensions with a straight-line heuristic.</p>
         <div class="container">
-            <img class="image" src="assets/demo corners.gif" style="float:left;width:18em;height:9em;">
-            <img class="image" src="assets/demo center.gif" style="float:left;width:9em;height:9em;">
+            <img class="image" src="assets/demo corners.gif" style="float:left;max-width:65%;min-width:300px;min-height:150px;">
+            <img class="image" src="assets/demo center.gif" style="float:left;max-width:25%;min-width:150px;min-height:150px;">
         </div>
     </div>
     
     
     <div class="subsection"><h5>Pixel Weaver</h5> <p>Uses PIL to generate series of life-like cellular automaton images.</p>
         <div class="container">
-            <img class="image" src="assets/Life Without Death 1 400.gif" style="float:left;width:10em;height:10em;">
-            <img class="image" src="assets/Conways 400 ring.gif" style="float:left;width:10em;height:10em;">
-            <img class="image" src="assets/Conways 1 100.gif" style="float:left;width:10em;height: 10em;">
-            <img class="image" src="assets/Diamoeba 300 march.gif" style="float:left;width:10em;height:10em;">
-            <img class="image" src="assets/Life Without Death 2 500.gif" style="float:left;width:10em;height:10em;">
+            <img class="image" src="assets/Life Without Death 1 400.gif" style="float:left;max-width:45%;max-height:200px;">
+            <img class="image" src="assets/Conways 400 ring.gif" style="float:left;max-width:45%;max-height:200px;">
+            <img class="image" src="assets/Conways 1 100.gif" style="float:left;max-width:45%;max-height:200px;">
+            <img class="image" src="assets/Diamoeba 300 march.gif" style="float:left;max-width:45%;max-height:200px;">
+            <img class="image" src="assets/Life Without Death 2 500.gif" style="float:left;max-width:45%;max-height:200px;">
         </div>
     </h5>
     </div>
@@ -82,7 +81,7 @@
     <div class="subsection"><h5>CharacterConvo</h5><p>Talk to Character.AI through Python + Webscraping. Could be used for a unofficial Discord bot "API".</p></div>
 </ul>
 </div>
-<br>
+
 <div class="section">
 <h3>Unity Projects (C#):</h3>
 <p>I use Unity for making simulations and sometimes games. I am often too ambitious with these projects (+ C# isnt my main language)</p>
@@ -126,6 +125,7 @@
 </div>
 </div>
 </div>
+    <script src="scripts/accordion.js"></script>
     <script src="scripts/top_banner.js"></script>
 </body>
 </html>

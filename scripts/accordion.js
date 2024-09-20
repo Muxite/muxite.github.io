@@ -1,16 +1,35 @@
-var accordions = document.getElementsByClassName("accordion");
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section, .subsection');  // accordion applies to .section and .subsection
 
+    sections.forEach(section => {
+        const header = section.firstElementChild;  // the first after div is the header
+        const content = Array.from(section.children).slice(1);  // everything but the first
+const wrapper = document.createElement('div');
+        wrapper.classList.add('accordion-wrapper');
+        section.insertBefore(wrapper, header);
+        wrapper.appendChild(header);
+        content.forEach(child => wrapper.appendChild(child));
+        header.classList.add('accordion-header');  // label
+        content.forEach(child => child.classList.add('accordion-content'));  // label basically
 
-var i;
-for (i = 0; i < accordions.length; i++) {
-    accordions[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block"){
-            panel.style.display = "none";
+        if (section.id === 'default-open') {
+            content.forEach(child => {
+                child.style.display = 'block';
+            });
         } else {
-            panel.style.display = "block"
+            content.forEach(child => {
+                child.style.display = 'none';
+            });
         }
-    });
-}
 
+        header.addEventListener('click', () => {
+            content.forEach(child => {
+                if (child.style.display === 'none' || child.style.display === '') {
+                    child.style.display = 'block';
+                } else {
+                    child.style.display = 'none';
+                }
+            });
+        });
+    });
+});

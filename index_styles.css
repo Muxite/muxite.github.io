@@ -14,16 +14,19 @@ h3 {
     font-size: 1.6em;
 }
 h5 {
-    font-size: 1.3em;
+    font-size: 1.4em;
+}
+h6 {
+    font-size:1.4em;
 }
 p{
-    font-size: 1em;
+    font-size: 1.2em;
 }
 a{
-    font-size: 1em;
+    font-size: 1.2em;
 }
 li{
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 .banner{
@@ -53,6 +56,10 @@ h3 {
 h5 {
     color: var(--gray-color);
     font-weight: 600;
+}
+h6 {
+    color: var(--gray-color);
+    font-weight: 500;
 }
 p {
     font-weight: 500;
@@ -90,7 +97,7 @@ html,body
 .top h1 {
     color: var(--gray-color);
     font-weight: 1000;
-    font-size: 4em;
+    font-size: 2.6em;
     margin:0px;
     position: absolute;
     top: 16%;
@@ -100,7 +107,7 @@ html,body
 
 
 .top h2 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     color: var(--gray-color);
     font-weight: 1000;
     margin:0px;
@@ -119,14 +126,6 @@ html,body
     left: 0%;
     height: 100%;
     width: 100%;
-}
-
-.image:hover {
-    border-style: solid;
-    border-width: 4px;
-    border-color: var(--red-color);
-    margin: 0.5em;
-    transform: scale(1.07); /* make it bigger */
 }
 
 
@@ -161,13 +160,11 @@ html,body
 .subsection {
     background-color: var(--subsection-color);
     width: 95%;
-    max-height: 800px;
-    margin: 0.5em;
+    margin: 0.5em auto;
     padding: 0.5em;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     flex-wrap: wrap;
+    gap: 1em;
     overflow: hidden;
 }
 
@@ -176,15 +173,80 @@ html,body
     max-width: 64em;
 }
 
-.subsection img {
-    margin: 1em;
-    object-fit: contain;
-    width: 20%;
-    height: auto;
-    margin: 0.5em; 
-    flex: 1 1 auto;
+.image {
+    object-fit: contain; /* Ensures images fit within their bounds */
+    flex: 1 1 auto; /* Flexible sizing */
+    height: 200px; /* Sets a consistent height */
+    aspect-ratio: 4 / 3; /* Ensures images maintain a 4:3 aspect ratio */
+    max-width: 100%; /* Prevents images from exceeding container width */
+    min-width: 200px; /* Sets a minimum width for smaller screens */
 }
 
+.subsection {
+    background-color: var(--subsection-color);
+    width: 95%;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em; /* Adds spacing between elements */
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.media {
+    display: block;
+    width: 100%; /* Adjust width to container */
+    max-width: 720px; /* Limit maximum size */
+    height: auto; /* Maintain intrinsic aspect ratio */
+}
+
+iframe.media {
+    aspect-ratio: 4/3; /* Video maintains 4:3 ratio by default */
+}
+
+
+.container {
+    display: flex; /* Ensures images are placed side-by-side */
+    justify-content: space-between; /* Adds space between the two images */
+    align-items: center; /* Aligns images vertically */
+    gap: 0.5em; /* Adds space between the images */
+    max-width: 100%; /* Keeps the container responsive */
+    overflow: hidden; /* Prevents content overflow */
+}
+
+.shrunk-image {
+    flex: 1 1 75%; /* 3/4 image */
+    max-width: calc(75% - 1em); /* Accounts for gap space */
+    height: auto; /* Maintains the image's aspect ratio */
+    object-fit: contain; /* Ensures images are fully visible within their space */
+    min-width: 150px; /* Prevents images from shrinking too small */
+}
+
+.duet-image {
+    flex: 1 1 50%; /* Ensures each image takes half the space */
+    max-width: calc(50% - 1em); /* Accounts for gap space */
+    height: auto; /* Maintains the image's aspect ratio */
+    object-fit: contain; /* Ensures images are fully visible within their space */
+    min-width: 150px; /* Prevents images from shrinking too small */
+}
+
+.tri-image {
+    flex: 1 1 33%; /* Ensures each image takes quarter the space */
+    max-width: calc(33% - 1em); /* Accounts for gap space */
+    height: auto; /* Maintains the image's aspect ratio */
+    object-fit: contain; /* Ensures images are fully visible within their space */
+    min-width: 150px; /* Prevents images from shrinking too small */
+}
+
+.quad-image {
+    flex: 1 1 25%; /* Ensures each image takes quarter the space */
+    max-width: calc(25% - 1em); /* Accounts for gap space */
+    height: auto; /* Maintains the image's aspect ratio */
+    object-fit: contain; /* Ensures images are fully visible within their space */
+    min-width: 150px; /* Prevents images from shrinking too small */
+}
 
 table {
     background-color: var(--table-color);

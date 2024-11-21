@@ -2,8 +2,8 @@ var title = document.querySelector('.top h1');
 var banner = document.querySelector('.banner');
 var webname = document.querySelector('.top h2');
 var title_name = document.title;
-var title_ratio = 0.06;
-var webname_ratio = 0.03;
+var title_ratio = 0.05;
+var webname_ratio = 0.025;
 const banners = ["assets/480 120 banner 2x.gif", "assets/A-star banner.gif"]
 function titleChange(){
     var width = innerWidth;

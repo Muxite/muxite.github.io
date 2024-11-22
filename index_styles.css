@@ -8,8 +8,6 @@
     --link-color: rgb(100, 100, 255);
 }
 
-
-
 h3 {
     font-size: 1.6em;
 }
@@ -41,9 +39,7 @@ li{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 } 
-
 
 h2 {
     color: var(--gray-color);
@@ -77,11 +73,10 @@ li {
     margin-left: 2em;
 }
 
-
-
-html,body
-{
+html, body {
     color: var(--gray-color);
+    margin: 1em;
+    
 }
 
 
@@ -91,7 +86,6 @@ html,body
     position: relative;
     display:block;
     margin:0;
-    
 }
 
 .top h1 {
@@ -104,7 +98,6 @@ html,body
     left: 4%;
     background-color: transparent;
 }
-
 
 .top h2 {
     font-size: 2.2em;
@@ -128,23 +121,29 @@ html,body
     width: 100%;
 }
 
+.whole {
+    display: block;
+    width: 100%;
+    flex-wrap: wrap; /* Allows wrapping to the next line if necessary */
+    gap: 1em; /* Optional: Adds spacing between sections */
+    justify-content: center; /* Centers the sections horizontally */
+}
 
 .section {
     background-color: var(--section-color);
-    align-items: left;
-    text-align: left;
-    display: inline-block;
-    width: 95%;
-    overflow-wrap: normal;    
+    display: block;
+    min-width: 20em; /* Ensures a minimum width of 80em */
+    max-width: 50em; /* Ensures a minimum width of 80em */
     margin: 0.5em;
     padding: 1em;
-    
+    text-align: left;
+    overflow-wrap: normal;
+    align-items: flex-start;
 }
 
 .section * {
     background-color: var(--section-color);
 }
-
 
 .accordion-content {
     display: none;
@@ -161,16 +160,19 @@ html,body
     background-color: var(--subsection-color);
     width: 95%;
     margin: 0.5em auto;
-    padding: 0.5em;
+    padding: 1em;
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 1em; /* Adds spacing between elements */
     overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
+
+
 
 .subsection * {
     background-color: var(--subsection-color);
-    max-width: 64em;
 }
 
 .image {
@@ -182,18 +184,7 @@ html,body
     min-width: 200px; /* Sets a minimum width for smaller screens */
 }
 
-.subsection {
-    background-color: var(--subsection-color);
-    width: 95%;
-    margin: 0.5em auto;
-    padding: 0.5em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em; /* Adds spacing between elements */
-    overflow: hidden;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
+
 
 .media {
     display: block;
@@ -205,7 +196,6 @@ html,body
 iframe.media {
     aspect-ratio: 4/3; /* Video maintains 4:3 ratio by default */
 }
-
 
 .container {
     display: flex; /* Ensures images are placed side-by-side */

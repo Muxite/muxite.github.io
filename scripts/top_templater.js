@@ -1,15 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Function to replace the banner image
-    function replaceBanner(newBannerSrc) {
-        document.getElementById('banner').src = newBannerSrc;
+function replaceBanner(newBannerSrc) {
+    const bannerElement = document.getElementById('banner');
+    if (bannerElement) {
+        bannerElement.src = newBannerSrc;
     }
+}
 
-    // Function to replace the project name
-    function replaceProjectName(newProjectName) {
-        document.getElementById('projectName').textContent = `Muk | ${newProjectName}`;
+function replaceProjectName(newProjectName) {
+    const projectNameElement = document.getElementById('projectName');
+    if (projectNameElement) {
+        projectNameElement.textContent = `Muk | ${newProjectName}`;
     }
+}
 
-    // Load the top template
+// This function loads the template and updates the banner and project name
+function loadTopTemplate() {
     fetch('top_template.html')
         .then(response => response.text())
         .then(data => {
@@ -29,4 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .catch(error => console.error('Error loading top template:', error));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadTopTemplate();
 });

@@ -1,10 +1,8 @@
 var title = document.querySelector('.top h1');
-var banner = document.querySelector('.banner');
 var webname = document.querySelector('.top h2');
 var title_name = document.title;
-var title_ratio = 0.05;
-var webname_ratio = 0.025;
-const banners = ["assets/480 120 banner 2x.gif", "assets/A-star banner.gif"]
+var title_ratio = 0.04;
+var webname_ratio = 0.022;
 function titleChange(){
     var width = innerWidth;
     if (width > 1280){
@@ -21,8 +19,6 @@ function titleChange(){
 window.addEventListener('resize', titleChange);
 
 window.onload = function() {
-    var pick = banners[Math.floor(Math.random() * banners.length)];
-    banner.src = pick;
     title.innerHTML = title_name;
     titleChange();
 };

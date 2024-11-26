@@ -49,26 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
         var low = 22.2;
         var yellow = (high + low)/2
         var red = 0;
-        var green = 255;
+        var green = 200;
 
         if (voltage <= low)
         {
-            red = 255;
+            red = 200;
             green = 0;
         }
         else if (low < voltage && voltage <= yellow)
         {
             red = 255;
-            green = sigmoidInterpolate(voltage, low, 0, yellow, 255);
+            green = sigmoidInterpolate(voltage, low, 0, yellow, 200);
         }
-        else if (yellow < voltage && voltage <= high)
+        else if (yellow < voltage && voltage < high)
         {
-            red = sigmoidInterpolate(voltage, yellow, 255, high, 0);
-            green = 255;
+            red = sigmoidInterpolate(voltage, yellow, 200, high, 0);
+            green = 200;
         }
         else
         {
-            green = 255;
+            green = 200;
             red = 0;
         }
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function updateColor() {
-        var voltage = slider.value/10;
+        var voltage = slider.value/100;
         voltageToColor(voltage);
     }
 

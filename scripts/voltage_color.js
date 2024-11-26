@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else if (low < voltage && voltage <= yellow)
         {
-            red = 255;
+            red = 200;
             green = sigmoidInterpolate(voltage, low, 0, yellow, 200);
         }
         else if (yellow < voltage && voltage < high)

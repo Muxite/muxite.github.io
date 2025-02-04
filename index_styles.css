@@ -206,17 +206,17 @@ iframe.media {
     overflow: hidden; /* Prevents content overflow */
 }
 
-.shrunk-image {
-    flex: 1 1 75%; /* 3/4 image */
-    max-width: calc(75% - 1em); /* Accounts for gap space */
+.full-image {
+    flex: 1 1 90%; /* 3/4 image */
+    width: calc(90% - 1em); /* Accounts for gap space */
     height: auto; /* Maintains the image's aspect ratio */
     object-fit: contain; /* Ensures images are fully visible within their space */
-    min-width: 150px; /* Prevents images from shrinking too small */
+    min-width: 300px; /* Prevents images from shrinking too small */
 }
 
 .duet-image {
     flex: 1 1 50%; /* Ensures each image takes half the space */
-    max-width: calc(50% - 1em); /* Accounts for gap space */
+    width: calc(50% - 1em); /* Accounts for gap space */
     height: auto; /* Maintains the image's aspect ratio */
     object-fit: contain; /* Ensures images are fully visible within their space */
     min-width: 150px; /* Prevents images from shrinking too small */
@@ -224,7 +224,7 @@ iframe.media {
 
 .tri-image {
     flex: 1 1 33%; /* Ensures each image takes quarter the space */
-    max-width: calc(33% - 1em); /* Accounts for gap space */
+    width: calc(33% - 1em); /* Accounts for gap space */
     height: auto; /* Maintains the image's aspect ratio */
     object-fit: contain; /* Ensures images are fully visible within their space */
     min-width: 150px; /* Prevents images from shrinking too small */
@@ -232,7 +232,7 @@ iframe.media {
 
 .quad-image {
     flex: 1 1 25%; /* Ensures each image takes quarter the space */
-    max-width: calc(25% - 1em); /* Accounts for gap space */
+    width: calc(25% - 1em); /* Accounts for gap space */
     height: auto; /* Maintains the image's aspect ratio */
     object-fit: contain; /* Ensures images are fully visible within their space */
     min-width: 150px; /* Prevents images from shrinking too small */

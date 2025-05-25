@@ -15,7 +15,7 @@ h5 {
     font-size: 1.4em;
 }
 h6 {
-    font-size:1.4em;
+    font-size: 1.4em;
 }
 p{
     font-size: 1.2em;
@@ -124,16 +124,16 @@ html, body {
 .whole {
     display: block;
     width: 100%;
-    flex-wrap: wrap; /* Allows wrapping to the next line if necessary */
-    gap: 1em; /* Optional: Adds spacing between sections */
-    justify-content: center; /* Centers the sections horizontally */
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
 }
 
 .section {
     background-color: var(--section-color);
     display: block;
-    min-width: 20em; /* Ensures a minimum width of 80em */
-    max-width: 50em; /* Ensures a minimum width of 80em */
+    min-width: 20em;
+    max-width: 50em;
     margin: 0.5em;
     padding: 1em;
     text-align: left;
@@ -163,7 +163,7 @@ html, body {
     padding: 1em;
     display: flex;
     flex-wrap: wrap;
-    gap: 1em; /* Adds spacing between elements */
+    gap: 1em;
     overflow: hidden;
     justify-content: flex-start;
     align-items: flex-start;
@@ -176,12 +176,12 @@ html, body {
 }
 
 .image {
-    object-fit: contain; /* Ensures images fit within their bounds */
-    flex: 1 1 auto; /* Flexible sizing */
-    height: 200px; /* Sets a consistent height */
-    aspect-ratio: 4 / 3; /* Ensures images maintain a 4:3 aspect ratio */
-    max-width: 100%; /* Prevents images from exceeding container width */
-    min-width: 200px; /* Sets a minimum width for smaller screens */
+    object-fit: contain;
+    flex: 1 1 auto;
+    height: 200px;
+    aspect-ratio: 4 / 3;
+    max-width: 100%;
+    min-width: 200px;
 }
 
 
